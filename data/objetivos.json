@@ -1,0 +1,8 @@
+[
+  {"id":"primeiro_passo","nome":"Primeiro Passo","descricao":"Aprove a primeira fase do CAMP60.","tipoCondicao":"primeira_fase","meta":1,"recompensaXP":0,"recompensaMoedas":50,"ativo":true},
+  {"id":"iniciante","nome":"Programador Iniciante","descricao":"Acumule 10 respostas corretas.","tipoCondicao":"acertos","meta":10,"recompensaXP":100,"recompensaMoedas":0,"ativo":true},
+  {"id":"sequencia","nome":"Em Boa Sequência","descricao":"Acerte 5 questões seguidas.","tipoCondicao":"sequencia","meta":5,"recompensaXP":0,"recompensaMoedas":50,"ativo":true},
+  {"id":"sem_erros","nome":"Sem Erros","descricao":"Conclua uma fase com 100% de acertos.","tipoCondicao":"perfeito","meta":1,"recompensaXP":100,"recompensaMoedas":0,"ativo":true},
+  {"id":"dedicado","nome":"Estudante Dedicado","descricao":"Aprove todas as fases de um mundo.","tipoCondicao":"mundo","meta":1,"recompensaXP":0,"recompensaMoedas":100,"ativo":true},
+  {"id":"mestre","nome":"Mestre da Lógica","descricao":"Acumule 100 respostas corretas.","tipoCondicao":"acertos","meta":100,"recompensaXP":200,"recompensaMoedas":0,"ativo":true}
+]

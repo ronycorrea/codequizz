@@ -1,0 +1,9 @@
+{
+  "name": "codequizz",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Aventura de programação com progresso local",
+  "scripts": { "start": "node scripts/serve.js", "test": "node --test --test-isolation=none", "validate": "node scripts/validate.js" },
+  "engines": { "node": ">=22.7" }
+}

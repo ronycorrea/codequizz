@@ -1,0 +1,7 @@
+[
+  {"id":"camp60","nome":"CAMP60","ordem":1,"descricao":"Seu primeiro passo no universo da programação.","conteudo":"Fundamentos e lógica","faseIds":["camp60-01","camp60-02","camp60-03","camp60-04","camp60-05","camp60-06","camp60-07","camp60-08"],"publicado":true,"visual":"camp"},
+  {"id":"fort57","nome":"FORT-57","ordem":2,"descricao":"Abra as portas da fortaleza com decisões inteligentes.","conteudo":"Condições e decisões","faseIds":[],"publicado":false,"visual":"fort"},
+  {"id":"pagem","nome":"PAGEM","ordem":3,"descricao":"Construa conexões na cidade de páginas.","conteudo":"HTML, CSS e JavaScript","faseIds":[],"publicado":false,"visual":"city"},
+  {"id":"lab22","nome":"LAB22","ordem":4,"descricao":"Experimente rotinas e descubra padrões.","conteudo":"Repetições e estruturas","faseIds":[],"publicado":false,"visual":"lab"},
+  {"id":"dimensao","nome":"DIMENSÃO","ordem":5,"descricao":"Combine seus conhecimentos e vá além.","conteudo":"Funções e algoritmos","faseIds":[],"publicado":false,"visual":"dimension"}
+]

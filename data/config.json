@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0", "pontos": {"facil":100,"medio":150,"dificil":200},
+  "xp": {"facil":50,"medio":75,"dificil":100}, "moedas": {"facil":10,"medio":15,"dificil":20},
+  "combo": {"passos":10,"maximo":40}, "fatorDica":0.7, "custos":{"dica":20,"pulo":30},
+  "premioAprovacao":{"xp":100,"moedas":50}, "saldoInicial":100,
+  "aprovacao":0.6,"duasEstrelas":0.8,"niveis":[0,500,1200,2000,3000],"xpPorNivelExtra":1000,
+  "janelaRecente":2,"limites":{"perfis":10,"sessoes":20,"importBytes":2097152}
+}
