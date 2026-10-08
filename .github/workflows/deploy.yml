@@ -78,7 +78,7 @@ jobs:
       - name: Verificar arquivos de publicação
         env:
           VERIFY_PUBLIC_ONLY: "1"
-        run: npm run verify-dist
+        run: npm run verify:dist
 
       - name: Configurar Pages
         uses: actions/configure-pages@v5
