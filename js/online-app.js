@@ -11,7 +11,7 @@ export async function mountGame(backend) {
   })));
   let p=null,route='home',selectedPhase,selectedWorld,result,rankingData=null,busy=false,recovery=false,authSession=null,authRevision=0;
   let titleAudio={sound:true,music:true,volume:65,motion:true};
-  let confirmationEmail='',authNotice=null;
+  let confirmationEmail='',accountEmail='',authNotice=null;
   const pendingStarts=new Map();
   const settings=()=>p?.settings||titleAudio;
   const button=(label,action,cls='secondary')=>`<button class="btn ${cls}" data-action="${action}">${label}</button>`;
@@ -19,7 +19,7 @@ export async function mountGame(backend) {
     if(!p&&!['home','profiles','signup','reset','confirmation','password','help'].includes(route)) route='home';
     if(route==='quiz'&&!p?.activeSession) route=p?'central':'home';
     const scroll=document.querySelector('.game-main')?.scrollTop||0;
-    const context={data,profile:p,connected:!!authSession,route,selectedPhase,selectedWorld,result,rankingData,confirmationEmail,authNotice,audioSettings:settings()};
+    const context={data,profile:p,connected:!!authSession,route,selectedPhase,selectedWorld,result,rankingData,confirmationEmail,accountEmail,authNotice,audioSettings:settings()};
     document.documentElement.dataset.motion=settings().motion?'on':'off';
     document.documentElement.dataset.screen=route;
     audio.configure(settings(),route);
@@ -56,7 +56,7 @@ export async function mountGame(backend) {
     if(name==='logout'){
       const previousAudio={...settings()};
       const {error}=await backend.client.auth.signOut({scope:'local'}); if(error) throw error;
-      authRevision++;authSession=null;titleAudio=previousAudio;p=null;recovery=false;confirmationEmail='';selectedPhase=selectedWorld=result=rankingData=undefined;pendingStarts.clear();go('home');return;
+      authRevision++;authSession=null;titleAudio=previousAudio;p=null;recovery=false;confirmationEmail=accountEmail='';selectedPhase=selectedWorld=result=rankingData=undefined;pendingStarts.clear();go('home');return;
     }
     if(['home','profiles','signup','reset','help'].includes(name)){go(name);return;}
     if(name==='sound'||name==='motion'){
@@ -109,6 +109,7 @@ export async function mountGame(backend) {
     if(key&&p) run(async()=>{accept(await backend.update(p,{...p.settings,[key]:key==='volume'?Number(event.target.value):event.target.checked}));render(false);audio.unlock();});
   };
   const input=event=>{
+    if(event.target.name==='email')accountEmail=event.target.value.trim();
     if(event.target.id==='volume-setting'){audio.configure({...settings(),volume:Number(event.target.value)},route);const o=document.querySelector('output[for="volume-setting"]');if(o)o.textContent=event.target.value+'%';}
   };
   const submit=event=>{
@@ -119,8 +120,11 @@ export async function mountGame(backend) {
     run(async()=>{
       const redirect=new URL('./',location.href);redirect.hash='';redirect.search='';
       let response;
+      if(['login-form','signup-form','reset-form','resend-form'].includes(id))accountEmail=form.get('email').trim();
       if(id==='login-form') response=await backend.client.auth.signInWithPassword({email:form.get('email').trim(),password:form.get('password')});
-      if(id==='signup-form') response=await backend.client.auth.signUp({email:form.get('email').trim(),password:form.get('password'),options:{data:{apelido:form.get('nickname').trim(),avatarId:form.get('avatar')},emailRedirectTo:redirect.href}});
+      if(id==='signup-form'){
+        response=await backend.client.auth.signUp({email:accountEmail,password:form.get('password'),options:{data:{apelido:form.get('nickname').trim(),avatarId:form.get('avatar')},emailRedirectTo:redirect.href}});
+      }
       if(id==='reset-form'){
         redirect.searchParams.set('recovery','1');response=await backend.client.auth.resetPasswordForEmail(form.get('email').trim(),{redirectTo:redirect.href});
       }
@@ -135,11 +139,18 @@ export async function mountGame(backend) {
         const message=authErrorMessage(response.error);
         throw new Error(message);
       }
+      // O Auth pode ofuscar o cadastro repetido de conta confirmada: HTTP 200,
+      // sem sessão e identities vazio. Não houve nova conta nem envio de e-mail.
+      const signupUser=response?.data?.user;
+      if(id==='signup-form'&&!response?.data?.session&&!signupUser?.invited_at&&Array.isArray(signupUser?.identities)&&signupUser.identities.length===0){
+        confirmationEmail='';
+        throw new Error(authErrorMessage({code:'user_already_exists'}));
+      }
       if(id==='resend-form'){showAuthNotice('Se esta conta estiver aguardando confirmação, confira sua caixa de entrada e a pasta de spam. Se já confirmou, volte para entrar.','success');return;}
       if(id==='reset-form'){go('profiles');toast('Se houver uma conta com esse e-mail, você receberá o link de recuperação.');return;}
       if(id==='password-form'){recovery=false;history.replaceState({},'',redirect.href);await refresh();go('central');toast('Senha atualizada.');return;}
       if(response?.data?.session){authSession=response.data.session;await refresh();go('central');audio.play('start');}
-      else if(id==='signup-form'){confirmationEmail=form.get('email').trim();go('confirmation',{message:'Para entrar, confirme seu e-mail. Se já tem uma conta confirmada, volte para entrar.',type:'success'});}
+      else if(id==='signup-form'){confirmationEmail=accountEmail;go('confirmation',{message:'Cadastro recebido. Confirme seu e-mail para entrar na conta.',type:'success'});}
     });
   };
   document.addEventListener('click',click);document.addEventListener('change',change);document.addEventListener('input',input);document.addEventListener('submit',submit);

@@ -5,7 +5,7 @@ import {createBackend} from '../js/backend.js';
 import {createProfile,data} from './helpers.js';
 import {toast} from '../js/ui.js';
 const tick=()=>new Promise(r=>setTimeout(r,5));
-async function harness(initial=false,authErrors={}){
+async function harness(initial=false,authErrors={},signupData={session:null,user:{identities:[{provider:'email'}]}}){
   const originals=Object.fromEntries(['document','window','fetch','FormData','location','history'].map(k=>[k,globalThis[k]]));
   const listeners=new Map(),requests=[],p=createProfile('Jogador QA','android',data.config);
   let session=initial?{user:{id:p.id}}:null,callback,controller,stored=structuredClone(p);
@@ -24,7 +24,7 @@ async function harness(initial=false,authErrors={}){
   const auth={
     onAuthStateChange(fn){callback=fn;return {data:{subscription:{unsubscribe(){}}}};},getSession:async()=>({data:{session},error:null}),
     signInWithPassword:async args=>{requests.push({auth:'login',...args});if(authErrors.login)return {error:authErrors.login};emit('SIGNED_IN',{user:{id:p.id}});return {data:{session},error:null};},
-    signUp:async args=>{requests.push({auth:'signup',...args});return {data:{session:null},error:authErrors.signup||null};},
+    signUp:async args=>{requests.push({auth:'signup',...args});return {data:signupData,error:authErrors.signup||null};},
     resend:async args=>{requests.push({auth:'resend',...args});return {data:{},error:authErrors.resend||null};},
     signOut:async()=>{emit('SIGNED_OUT',null);return {error:null};},
     resetPasswordForEmail:async(email,args)=>{requests.push({auth:'reset',email,...args});return {error:null};},
@@ -80,6 +80,43 @@ test('falha de SMTP e limite de envio aparecem como erro persistente, sem inform
       assert.equal(h.feedback.dataset.kind,'error');assert.equal(h.feedback.hidden,false);assert.ok(!h.feedback.textContent.includes('confira sua caixa'));
       assert.match(h.feedback.textContent,error.code==='email_address_not_authorized'?/configurar o envio/:/limite de envio/);
       assert.equal(h.getState().profile,null);assert.equal(h.getState().route,'confirmation');
+    }finally{h.cleanup();}
+  }
+});
+
+test('conta existente: aviso persistente no cadastro e opções de acesso preservam o e-mail',async()=>{
+  const cases=[
+    {data:{session:null,user:{identities:[]}},error:null},
+    {error:{code:'user_already_exists',message:'User already registered'}},
+    {error:{code:'email_exists',message:'Email already exists'}},
+    {error:{message:'User already registered'}}
+  ];
+  for(const response of cases){
+    const h=await harness(false,{signup:response.error},response.data);try{
+      await h.click('signup');
+      await h.submit('signup-form',{email:' qa@example.com ',password:'test-password',nickname:'QA',avatar:'android'});
+      assert.equal(h.getState().route,'signup');assert.equal(h.getState().profile,null);
+      assert.equal(h.feedback.hidden,false);assert.equal(h.feedback.dataset.kind,'error');
+      assert.equal(h.feedback.textContent,'Já existe uma conta com este e-mail. Entre na conta ou recupere sua senha.');
+      assert.match(h.root.innerHTML,/ENTRAR NA CONTA/);assert.match(h.root.innerHTML,/ESQUECI MINHA SENHA/);
+      assert.doesNotMatch(h.root.innerHTML,/resend-form/);
+      assert.equal(h.requests.filter(x=>x.auth==='resend'||x.name==='obter_perfil'||x.name==='consultar_cadastro').length,0);
+      await h.click('profiles');assert.match(h.root.innerHTML,/login-form/);assert.match(h.root.innerHTML,/value="qa@example.com"/);
+      await h.click('reset');assert.match(h.root.innerHTML,/reset-form/);assert.match(h.root.innerHTML,/value="qa@example.com"/);
+      await h.submit('reset-form',{email:'qa@example.com'});assert.equal(h.requests.filter(x=>x.auth==='reset').length,1);
+      await h.submit('login-form',{email:'qa@example.com',password:'test-password'});assert.equal(h.getState().route,'central');
+    }finally{h.cleanup();}
+  }
+});
+
+test('conta pendente e convite continuam na confirmação, sem falso aviso de conta confirmada',async()=>{
+  for(const user of [{identities:[{provider:'email'}],email_confirmed_at:null},{identities:[],invited_at:'2026-10-01T00:00:00Z'}]){
+    const h=await harness(false,{}, {session:null,user});try{
+      await h.click('signup');await h.submit('signup-form',{email:'qa@example.com',password:'test-password',nickname:'QA',avatar:'android'});
+      assert.equal(h.getState().route,'confirmation');assert.equal(h.getState().profile,null);
+      assert.match(h.root.innerHTML,/resend-form/);
+      assert.doesNotMatch(h.root.innerHTML,/Já existe uma conta/);
+      assert.equal(h.requests.filter(x=>x.auth==='resend').length,0);
     }finally{h.cleanup();}
   }
 });
