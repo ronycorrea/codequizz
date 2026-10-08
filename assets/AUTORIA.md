@@ -6,7 +6,6 @@
 | Regiões e construções | `js/game-art.js`, função `regionArt` | Cinco ilustrações SVG originais para a campanha |
 | Personagens de corpo inteiro | `js/game-art.js`, função `character` | Explorador e androide em SVG com estados de resposta e movimento opcional |
 | Medalhas | `js/game-art.js`, função `medal` | Desenhos SVG originais de bronze, prata e ouro |
-| Padrão de computadores | `assets/images/game-pattern.svg` | Padrão original da revisão anterior, preservado; o fundo atual usa gradientes CSS suaves |
 | Cenários por mundo | `js/world-background.js`, `css/worlds.css` | Construções, redes, experimentos e portais originais desenhados com CSS, baseados nas direções visuais da seção 3 do GDD; sem arquivos de imagem externos |
 | Fundo das telas gerais | `js/world-background.js`, `css/worlds.css` | Composição original dos cinco cenários, distribuídos pelas bordas e combinados com gradientes suaves; reutiliza as formas CSS do projeto |
 | Fonte Lilita One | `assets/fonts/LilitaOne-Regular.ttf` | Juan Montoreano, 2011; obtida no repositório oficial Google Fonts; licença SIL OFL 1.1 em `assets/fonts/OFL-LilitaOne.txt` |

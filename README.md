@@ -1,45 +1,35 @@
 # CodeQuizz
 
-Aprenda programação jogando. Uma aventura em português brasileiro com mapa de progressão, quizzes e explicações, recriada do zero a partir do GDD e dos requisitos de software de 01/10/2026.
+Jogo web em HTML, CSS e JavaScript, com Supabase Auth e regras no PostgreSQL. O navegador mostra as telas; funções SQL/PLpgSQL sorteiam perguntas, conferem respostas e determinam pontos, XP, moedas, progresso e ranking.
 
 ## Executar
 
-Com Node.js 22.7 ou superior:
+Com Node.js 24:
 
 ```sh
+npm ci
 npm start
 ```
 
-Abra **http://127.0.0.1:4173**. Não há dependências para instalar, build ou backend. Node é usado apenas para servir os arquivos no desenvolvimento e rodar testes. Também é possível usar qualquer servidor HTTP estático, como o Live Server do editor. Abrir `index.html` por `file://` não é suportado, pois o jogo carrega módulos e JSON.
+Abra **http://127.0.0.1:4173**. O comando compila o jogo em `dist/` e serve apenas esse diretório. Abrir o HTML por `file://` ou servir a raiz do repositório não corresponde à versão publicada.
 
-## Telas e direção visual
+A URL do projeto e a chave pública estão em [config/supabase.json](config/supabase.json). As tabelas e funções precisam ser instaladas no Supabase antes de jogar: siga [docs/SUPABASE.md](docs/SUPABASE.md). A chave pública não administra o banco.
 
-A interface é organizada como um jogo: entrada, seleção de explorador, menu com hexágonos e botão PLAY, campanha por regiões, trilha de fases com bandeiras e quiz com personagem, janelas de desafio e painel de poderes. Objetivos, troféus, ranking local e opções têm telas próprias. O menu permite voltar à campanha sem perder a partida; há controle de tela cheia em navegadores compatíveis.
+## Funcionamento
 
-Os PDFs definem o escopo e as regras. Os dez protótipos fornecidos orientam as cores, a marca, os personagens e a composição das telas, sem reprodução literal. A campanha por regiões disponíveis e futuras também foi informada pela referência [CodeCombat](https://br.codecombat.com/play). As ilustrações e personagens são SVGs originais; nenhuma arte desse site foi incorporada. A fonte Lilita One é distribuída localmente com sua licença, sem depender de rede durante o jogo.
+- Cadastro, login, confirmação de e-mail e recuperação de senha com Supabase Auth.
+- Tela de confirmação com reenvio por ação do jogador e mensagens persistentes de falha de envio/limite.
+- Um perfil por conta, com apelido e dois avatares. Senhas ficam sob responsabilidade do Auth.
+- Cinco mundos; CAMP60 publicado com oito fases. As outras regiões possuem prévias de cenário.
+- 210 perguntas autorais, com sorteio e quotas validados no banco. Só a pergunta atual é enviada, sem gabarito antes da resposta.
+- Dica, pulo, combo, pontos, XP, moedas, níveis, estrelas, bônus e seis objetivos com resgate único.
+- Retomada de partida inclusive no feedback, com snapshots privados das perguntas e regras.
+- Ranking online pela soma dos recordes por fase; outros jogadores são identificados por apelido e avatar.
+- Botão Sair no topo e no feedback: encerra a sessão neste dispositivo e preserva a partida no banco.
+- Cenários CSS por mundo conforme a seção 3 do GDD; telas gerais compõem os cinco ambientes.
+- Trilha de aventura e efeitos originais sintetizados com Web Audio; preferências de volume, som, música e animações.
 
-O fundo usa gradientes suaves de lilás e azul. A estrutura ocupa a altura disponível (`100dvh`), com menus e mapas dimensionados pela área da tela e disposições próprias para celular na vertical ou horizontal. A página não rola; listas extensas, opções, ajuda e textos longos têm rolagem interna para manter o conteúdo acessível. A conferência visual dessas disposições continua pendente em navegador real.
-
-Os cenários de cada mundo seguem a seção 3 do GDD: CAMP60 tem plataformas e pistas de treinamento; FORT-57, muralhas, portões e circuitos; PAGEM, edifícios em forma de páginas conectadas; LAB22, bancadas, experimentos, matrizes e ciclos; DIMENSÃO, portais e núcleo digital. São elementos CSS decorativos, sem imagens externas, com centro suave para leitura e movimento respeitando a preferência do jogador. O mundo da fase determina o fundo no mapa, preparação, quiz e resultado, inclusive na retomada. Entrada, escolha de perfil, menu, seleção geral de mundos, objetivos, troféus, ranking, perfil, opções e ajuda usam uma composição dos cinco ambientes. Clique em uma região futura para ver seu ambiente; suas fases continuam em desenvolvimento.
-
-O botão **Sair**, visível no topo quando existe um perfil ativo, retorna diretamente à tela de entrada e remove a seleção do perfil. Também está disponível no menu e no feedback do quiz. O progresso e a partida em andamento são preservados; para retomar, escolha o mesmo perfil. Atualizar a página depois de sair mantém a tela de entrada.
-
-Uma trilha original de aventura, em loop a 112 BPM, acompanha mundos, mapa, preparação e quiz. Há efeitos distintos para botões, alternativas, acerto, erro, início, dica, pulo, recompensa e resultado. Tudo é sintetizado com Web Audio, sem arquivos externos. O áudio começa após interação, a música pausa quando a aba fica oculta e não reinicia a cada atualização do quiz. Em Opções há volume, música e som geral. Perfis antigos preservam a preferência de mudo; o ícone de alto-falante ativa o áudio.
-
-## Implementação funcional
-
-- Tela inicial, ajuda, central e até dez perfis locais com apelido e dois avatares.
-- Cinco mundos apresentados; CAMP60 publicado com oito fases em sequência. As outras regiões aparecem como **Em desenvolvimento**.
-- Mapa SVG e lista equivalente, preparação, alternativas por ID, confirmação, explicações e resultado.
-- 210 questões autorais: sete bancos com 15 fáceis, 9 médias e 6 difíceis. A final compartilha os bancos por temas.
-- Sorteio sem reposição, quotas fixas, janela das duas últimas tentativas por fase e prioridade alternada entre inéditas e erros antigos fora da janela.
-- Dica, pulo, pontos, combo, XP, níveis, moedas, recordes, estrelas e desbloqueios.
-- Seis objetivos permanentes, resgate único, Sala de Troféus, estatísticas e ranking dos perfis deste navegador.
-- Partida retomável com snapshots das questões, alternativas e regras, inclusive durante feedback.
-- Salvamento por evento, exportação/importação com validação e confirmação, exclusão por perfil com confirmação, detecção de conflitos entre abas e recuperação de save inválido.
-- Layout para desktop e celular, controles de som e movimento, foco visível e alternativas operáveis por teclado. Os sons são sintetizados localmente e só iniciam por interação.
-
-Esta é uma implementação inicial funcional, ainda sujeita à revisão editorial das questões, à conferência visual em navegador e à validação com estudantes. A história do Ruído e o guia Byte permanecem decisões abertas nos documentos e não foram incorporados à narrativa.
+Os PDFs definem o escopo. Os protótipos orientam cores e composição, sem reprodução literal; [CodeCombat](https://br.codecombat.com/play) orienta a campanha por regiões. Arte SVG e áudio são originais, e a fonte Lilita One possui licença local. A página usa `100dvh`, com rolagem interna para conteúdo longo. Validação visual em navegador ainda pendente.
 
 ## Regras
 
@@ -49,73 +39,55 @@ Esta é uma implementação inicial funcional, ainda sujeita à revisão editori
 | Média | 150 | 75 | 15 |
 | Difícil | 200 | 100 | 20 |
 
-Fases comuns: 10 questões nas quotas 5/3/2. Final: 15 nas quotas 3/6/6. Aprovação a partir de 60%. Uma estrela com aprovação, duas com pelo menos 80%, três com 100% sem nenhum poder. Recordes de pontos, precisão e estrelas são preservados independentemente da última tentativa.
+Fases comuns: 10 questões nas quotas 5/3/2. Final: 15 nas quotas 3/6/6. Aprovação com 60%; duas estrelas com 80%; três com 100% sem poderes. Recordes de pontos, precisão e estrelas são preservados independentemente da última tentativa.
 
-O combo acrescenta 10 por acerto anterior seguido, até 40. A dica custa 20 e aplica `floor((base + combo) * 0.7)` aos pontos, sem alterar XP ou moedas por acerto. O pulo custa 30, é limitado a uma vez por partida, dá zero e entra no denominador da precisão. Erro e pulo zeram o combo. A primeira aprovação de cada fase paga 100 XP e 50 moedas uma vez por perfil.
+O combo acrescenta 10 por acerto anterior seguido, até 40. A dica custa 20 e aplica `floor((base + combo) * 0.7)` aos pontos. O pulo custa 30, uma vez por partida, dá zero e entra no denominador. Erro e pulo zeram o combo. A primeira aprovação de cada fase paga 100 XP e 50 moedas uma vez por conta. Objetivos têm resgate único.
 
 Níveis começam em 0, 500, 1.200, 2.000 e 3.000 XP; depois avançam a cada 1.000 XP. Não há cronômetro, vidas ou compra com dinheiro. Cada perfil recebe 100 moedas ao ser criado.
 
-## Estrutura
+## Arquitetura
 
-```text
-index.html              Entrada semântica
-css/                    Base, telas de jogo, campanha e batalha
-js/app.js               Navegação, persistência e eventos
-js/game-screens.js      Composição das telas e HUD
-js/game-art.js          Marca, personagens, regiões e medalhas SVG
-js/world-background.js  Cenários CSS e identificação do mundo atual
-js/audio.js             Trilha original, efeitos e controles de áudio
-js/selection.js         Sorteio e embaralhamento
-js/quiz.js              Sessão, respostas e exposição
-js/game.js              Recompensas, níveis e ranking
-js/achievements.js      Objetivos e resgates
-js/storage.js           Persistência e validação do save
-js/validation.js        Validação de conteúdo e regras
-js/map.js               Pré-requisitos e progresso
-js/ui.js                Componentes, arte SVG e áudio
-data/                   Configuração, mundos, fases, questões e objetivos
-assets/                 Ícone, padrão visual, fonte local e autoria
-docs/                   Documentação original e relatório de validação
-scripts/                Servidor, geração de conteúdo e validação
-tests/                  Regras e integração dos eventos/telas
+| Componente | Responsabilidade |
+| --- | --- |
+| `js/app.js` | Inicializar supabase-js com chave pública |
+| `js/online-app.js` | Navegação, Auth e eventos |
+| `js/backend.js` | Contrato das chamadas RPC |
+| `js/game-screens.js`, `js/account-screens.js` | Telas do jogo e contas |
+| `privado/supabase/migrations/` | Tabelas, RLS, grants e funções SQL/PLpgSQL |
+| `privado/supabase/seed.sql` | Conteúdo administrativo e gabaritos separados |
+| `privado/supabase/instalar-codequizz.sql` | Instalação inicial completa no SQL Editor |
+| `scripts/build.js` | Gerar somente os arquivos públicos em `dist/` |
+| `privado/supabase/preparar-primeiro-teste.sql` | Reset administrativo único antes de novos cadastros |
+
+Render não participa dessa arquitetura. O motor de pontuação local, importação/exportação de saves e a versão antiga foram removidos. O navegador apenas apresenta os resultados das RPCs. Na primeira abertura desta revisão, os saves e a sessão local antigos deste projeto são removidos uma única vez; novos logins são preservados.
+
+## Conteúdo administrativo
+
+`privado/data/perguntas.json` e `privado/scripts/generate-content.js` são fontes de autoria, nunca carregadas pelo jogo online. Depois de revisar as questões:
+
+```sh
+npm run validate
+npm run db:seed
 ```
 
-## Conteúdo e manutenção
+Execute apenas `privado/supabase/seed.sql` no SQL Editor para atualizar o catálogo. Partidas em andamento mantêm suas perguntas/regras originais. O instalador completo é usado uma vez em banco novo.
 
-Os arquivos em `data/` são consumidos diretamente pelo jogo. `scripts/generate-content.js` registra a fonte autoral do banco inicial; `node scripts/generate-content.js` regenera `data/perguntas.json`. Ao revisar esse banco, mantenha fonte e JSON sincronizados; não mova registros existentes, pois seus IDs são derivados da posição. Acrescente registros mantendo IDs estáveis, ou adote IDs explícitos antes de ampliar o gerador.
+**Publique somente o conteúdo de `dist/` em um repositório novo para GitHub Pages.** `privado/` está no `.gitignore`, mas os gabaritos já existem no histórico Git local: ignorar ou mover arquivos não limpa esse histórico. Não envie a raiz nem o histórico deste projeto ao repositório público. Mantenha backup privado de `privado/`: ela contém perguntas, geradores, migrações e os PDFs. Veja [o guia](docs/SUPABASE.md).
 
-Cada questão tem quatro alternativas com IDs próprios, `corretaId`, dificuldade, temas, linguagem, explicação e dica. A letra visual muda ao embaralhar; o ID correto permanece. Conteúdo, código e apelidos são escapados na renderização; trechos de código nunca são executados. Revise enunciado, distratores e explicação antes de publicar.
-
-Rode os verificadores depois de modificar conteúdo ou regras:
+## Verificação
 
 ```sh
 npm run validate
 npm test
+npm run build
+npm run verify:dist
+npm run security
 ```
 
-O validador verifica referências, IDs, alternativas, grafo de pré-requisitos e bancos com no mínimo três vezes cada quota. Os testes usam aleatoriedade controlada, regras econômicas, retomada, importação, isolamento de perfis e um fluxo integrado das oito fases. A superfície DOM simulada dos testes de integração não comprova layout, acessibilidade real ou compatibilidade entre navegadores.
+Os testes SQL usam PostgreSQL via PGlite, com `auth.uid()` e papéis de API simulados. Conferem permissões, isolamento, RPCs, economia, campanha completa e repetição de requisições. Testes de interface usam DOM/serviço Auth simulados; confirmação de e-mail, recuperação por link real, concorrência entre conexões e layout devem ser conferidos no Supabase e no navegador. Veja [docs/SUPABASE.md](docs/SUPABASE.md).
 
-## Dados locais
+## Antes do primeiro teste
 
-O save usa somente `codequizz:save:v1`, com `schemaVersion: 1`, versão do conteúdo e revisão. São mantidas as vinte sessões encerradas mais recentes, estatísticas permanentes e uma janela recente separada por fase. Dados de outros sites não são apagados. A versão inicial não possui migrações de schemas anteriores: saves desconhecidos são recusados sem sobrescrever o arquivo; é oferecido download para recuperação.
+Execute uma única vez [privado/supabase/preparar-primeiro-teste.sql](privado/supabase/preparar-primeiro-teste.sql) no SQL Editor como postgres. Ele apaga contas com perfil CodeQuizz e todos os seus dados de jogo, preserva o catálogo e aplica a proteção do ranking para contas excluídas. O reset remoto não foi executado pelo agente, pois não há conexão administrativa disponível. Não execute novamente após começar os novos cadastros.
 
-O progresso pertence à origem (protocolo, host e porta). HTTP e HTTPS, `localhost` e `127.0.0.1`, ou portas diferentes não compartilham automaticamente o save. Exporte para transferir. Na importação, um arquivo de até 2 MB é validado antes da confirmação para substituir os perfis existentes. Ao detectar mudanças de outra aba, ações de edição são bloqueadas até recarregar.
-
-Não há autenticação, sincronização entre aparelhos, ranking online ou proteção de pontuação contra alterações locais. Falhas de armazenamento são comunicadas e o estado em memória pode ser exportado.
-
-## Publicação no GitHub Pages
-
-1. Envie os arquivos para um repositório GitHub.
-2. Configure Pages para publicar a raiz da branch desejada.
-3. Abra a URL HTTPS do projeto e confira carregamento de CSS, módulos, JSON, navegação e salvamento.
-
-Todos os caminhos da aplicação são relativos. Não é necessário `npm run deploy`, build ou serviço Node no ambiente publicado. Nenhum repositório foi criado e nenhuma versão foi publicada nesta entrega.
-
-## Documentação de referência
-
-- [Requisitos de software](docs/CodeQuizz_Requisitos_de_Software.pdf)
-- [Game Design Document](docs/CodeQuizz_GDD.pdf)
-- [Validação executada e verificações pendentes](docs/VALIDACAO.md)
-- [Autoria dos elementos visuais e sonoros](assets/AUTORIA.md)
-
-Os PDFs são referências de produto e especificações planejadas. O escopo implementado e as evidências de teste estão descritos neste README e no relatório de validação.
+O diretório `dist/` já contém o site para publicação manual. Configure no Supabase a URL final do Pages e os redirecionamentos de confirmação/recuperação. A conexão SMTP com Brevo foi informada como funcionando pelo usuário. Revisão de segurança e limites: [docs/SEGURANCA.md](docs/SEGURANCA.md).

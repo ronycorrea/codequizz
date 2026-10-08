@@ -1,0 +1,99 @@
+name: Publicar CodeQuizz
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+      SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v6
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Preparar configuração pública
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+
+          const url = process.env.SUPABASE_URL;
+          const publishableKey = process.env.SUPABASE_PUBLISHABLE_KEY;
+
+          if (!url || !publishableKey) {
+            throw new Error('Configure as duas variáveis do Supabase no GitHub.');
+          }
+
+          fs.mkdirSync('config', { recursive: true });
+          const file = 'config/supabase.json';
+          const settings = fs.existsSync(file)
+            ? JSON.parse(fs.readFileSync(file, 'utf8'))
+            : {};
+
+          fs.writeFileSync(file, JSON.stringify({
+            ...settings,
+            url,
+            publishableKey
+          }, null, 2));
+          NODE
+
+      - name: Gerar site
+        run: npm run build
+
+      - name: Executar testes
+        run: npm test
+
+      - name: Validar projeto
+        run: npm run validate
+
+      - name: Verificar segurança
+        run: npm run security
+
+      - name: Verificar arquivos de publicação
+        run: npm run verify:dist
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Enviar site gerado
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

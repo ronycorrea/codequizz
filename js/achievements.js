@@ -9,13 +9,3 @@ export function objectiveProgress(objective, profile, worlds) {
     default: return 0;
   }
 }
-export function evaluateObjectives(profile, objectives, worlds) {
-  for (const o of objectives.filter(o => o.ativo)) if (objectiveProgress(o, profile, worlds) >= o.meta && !profile.achievements[o.id]) profile.achievements[o.id] = { unlockedAt: new Date().toISOString(), claimedAt: null };
-}
-export function claimObjective(profile, objective) {
-  const achievement = profile.achievements[objective.id];
-  if (!achievement || achievement.claimedAt) return false;
-  achievement.claimedAt = new Date().toISOString();
-  profile.xp += objective.recompensaXP; profile.coins += objective.recompensaMoedas;
-  return true;
-}
