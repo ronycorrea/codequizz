@@ -6,7 +6,9 @@ export const publicFiles = [
   'config/supabase.json','js/app.js'
 ];
 export function contentSecurityPolicy(projectUrl) {
-  if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(projectUrl)) throw new Error('URL do Supabase inválida.');
-  // SVGs e barras usam estilos inline; JavaScript inline e eval permanecem bloqueados.
-  return `default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src ${projectUrl}; media-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'`;
+  if (!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(projectUrl)) {
+    throw new Error('URL do Supabase inválida.');
+  }
+
+  return `default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' ${projectUrl}; media-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'`;
 }
