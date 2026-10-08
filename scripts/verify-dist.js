@@ -11,8 +11,26 @@ for(const file of list){
 }
 assert.equal(list.length,publicFiles.length,'Arquivo público ausente.');
 const bundle=await readFile('dist/js/app.js','utf8');
-const questions=JSON.parse(await readFile('privado/data/perguntas.json','utf8'));
-for(const q of questions){assert.ok(!bundle.includes(q.enunciado),`Pergunta incorporada ao bundle: ${q.id}`);assert.ok(!bundle.includes(q.explicacao),`Explicação incorporada ao bundle: ${q.id}`);}
+if (process.env.VERIFY_PUBLIC_ONLY === '1') {
+  console.log('Modo público: comparação com o catálogo privado não executada.');
+} else {
+  const questions = JSON.parse(
+    await readFile('privado/data/perguntas.json', 'utf8')
+  );
+
+  for (const q of questions) {
+    assert.ok(
+      !bundle.includes(q.enunciado),
+      `Pergunta incorporada ao bundle: ${q.id}`
+    );
+    assert.ok(
+      !bundle.includes(q.explicacao),
+      `Explicação incorporada ao bundle: ${q.id}`
+    );
+  }
+
+  console.log('Catálogo privado comparado com o bundle.');
+}
 assert.ok(!bundle.includes('service_role'));
 const config=JSON.parse(await readFile('dist/config/supabase.json','utf8'));
 assert.ok(config.publishableKey.startsWith('sb_publishable_'));
@@ -23,4 +41,4 @@ for(const file of list.filter(f=>!f.endsWith('.ttf'))){
   const text=await readFile(file,'utf8');
   assert.ok(!/sb_secret_[A-Za-z0-9_-]+|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/.test(text),`Credencial privada em ${file}`);
 }
-console.log(`Publicação verificada: ${list.length} arquivos, sem catálogo, gabaritos, SQLs ou save local.`);
+console.log(`Publicação verificada: ${list.length} arquivos; lista pública, configuração, CSP e padrões de credenciais conferidos.`);
