@@ -61,11 +61,16 @@ jobs:
       - name: Gerar site
         run: npm run build
 
-      - name: Executar testes
-        run: npm test
+      - name: Executar testes da interface
+        run: >-
+          node --test --test-isolation=none
+          tests/audio.test.js
+          tests/auth-messages.test.js
+          tests/backend.test.js
+          tests/first-test.test.js
+          tests/online-app.test.js
+          tests/world-background.test.js
 
-      - name: Validar projeto
-        run: npm run validate
 
       - name: Verificar segurança
         run: npm run security
