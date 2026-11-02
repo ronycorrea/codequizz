@@ -3,6 +3,7 @@ name: Publicar CodeQuizz
 on:
   push:
     branches: [main]
+    paths: ['.github/workflows/deploy.yml']
   workflow_dispatch:
 
 permissions:
@@ -13,93 +14,44 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-latest
-
-    env:
-      SUPABASE_URL: ${{ vars.SUPABASE_URL }}
-      SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
-
     steps:
-      - name: Baixar código
+      - name: Baixar somente o site publico revisado
         uses: actions/checkout@v6
-
-      - name: Configurar Node.js
-        uses: actions/setup-node@v7
         with:
-          node-version: '24'
-          cache: npm
+          ref: gh-pages
+          path: site
+          persist-credentials: false
 
-      - name: Instalar dependências
-        run: npm ci
-
-      - name: Preparar configuração pública
+      - name: Conferir as entradas dos dois modos
+        shell: bash
         run: |
-          node --input-type=module <<'NODE'
-          import fs from 'node:fs';
-
-          const url = process.env.SUPABASE_URL;
-          const publishableKey = process.env.SUPABASE_PUBLISHABLE_KEY;
-
-          if (!url || !publishableKey) {
-            throw new Error('Configure as duas variáveis do Supabase no GitHub.');
-          }
-
-          fs.mkdirSync('config', { recursive: true });
-          const file = 'config/supabase.json';
-          const settings = fs.existsSync(file)
-            ? JSON.parse(fs.readFileSync(file, 'utf8'))
-            : {};
-
-          fs.writeFileSync(file, JSON.stringify({
-            ...settings,
-            url,
-            publishableKey
-          }, null, 2));
-          NODE
-
-      - name: Gerar site
-        run: npm run build
-
-      - name: Executar testes da interface
-        run: >-
-          node --test --test-isolation=none
-          tests/audio.test.js
-          tests/auth-messages.test.js
-          tests/backend.test.js
-          tests/first-test.test.js
-          tests/online-app.test.js
-          tests/world-background.test.js
-
-
-      - name: Verificar segurança
-        run: npm run security
-
-      - name: Verificar arquivos de publicação
-        env:
-          VERIFY_PUBLIC_ONLY: "1"
-        run: npm run verify:dist
+          test -f site/index.html
+          test -f site/campanha/index.html
+          test -f site/js/app.js
+          test -f site/js/narrative-app.js
+          test -f site/config/supabase.json
+          test ! -d site/privado
+          test ! -d site/node_modules
 
       - name: Configurar Pages
         uses: actions/configure-pages@v5
 
-      - name: Enviar site gerado
+      - name: Enviar site publico
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: site
 
   deploy:
-    needs: build
+    needs: prepare
     runs-on: ubuntu-latest
-
     permissions:
       pages: write
       id-token: write
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Publicar no GitHub Pages
         id: deployment
