@@ -1,0 +1,21 @@
+Interface de entrada CodeQuizz
+
+Origem dos assets em assets/welcome/: arquivo Figma fornecido pelo usuário,
+5KxaqJTU9ln6gcd1fPwr41, tela 3:808, e sua exportação "Tela login codequizz.svg".
+O cenário, a miniatura da campanha e o personagem são as três imagens originais
+embutidas nessa exportação, extraídas sem alteração nos bytes. As duas elipses
+foram separadas preservando suas dimensões, cores e coordenadas originais.
+Os demais SVGs são ícones exportados diretamente do mesmo arquivo Figma.
+A autoria e a autorização para redistribuição do desenho e das imagens pertencem aos
+seus respectivos titulares; a inclusão neste projeto não altera essas condições.
+
+Fredoka: fonte original distribuída pelo projeto Google Fonts sob SIL Open Font License 1.1.
+https://github.com/google/fonts/tree/main/ofl/fredoka
+Licença local: assets/fonts/OFL-Fredoka.txt.
+
+Inter: fonte original distribuída pelo projeto Google Fonts sob SIL Open Font License 1.1.
+https://github.com/google/fonts/tree/main/ofl/inter
+Licença local: assets/fonts/OFL-Inter.txt.
+
+JetBrains Mono: reutilizada do arquivo local assets/campaign/JetBrainsMono.ttf.
+Licença local: assets/campaign/JetBrainsMono-OFL.txt.
