@@ -1,0 +1,227 @@
+/* All scenery is drawn with CSS. The center stays quiet for readable game windows. */
+.game-screen[data-world=camp60],.hub-camp60{--world-sky:#d9eee9;--world-ground:#b9d0d1;--world-glow:#e4f2c8;--world-line:#6e9b96;--world-accent:#479b82}
+.game-screen[data-world=fort57],.hub-fort57{--world-sky:#dce0f0;--world-ground:#b0b0ce;--world-glow:#eddfbf;--world-line:#77789d;--world-accent:#8c76b6}
+.game-screen[data-world=pagem],.hub-pagem{--world-sky:#d7edf4;--world-ground:#a9d5da;--world-glow:#d1f5ee;--world-line:#5c9eab;--world-accent:#279baf}
+.game-screen[data-world=lab22],.hub-lab22{--world-sky:#e1eaf6;--world-ground:#b2c7e5;--world-glow:#d8f1e5;--world-line:#738dbb;--world-accent:#628fd2}
+.game-screen[data-world=dimensao],.hub-dimensao{--world-sky:#dedbf0;--world-ground:#bab1dd;--world-glow:#f1dcf1;--world-line:#8a72b6;--world-accent:#9c65b7}
+.game-screen[data-world]:not([data-world=hub]) .game-backdrop{
+  background:radial-gradient(ellipse at 50% 38%,#fafcff 0,#fafcff80 28%,transparent 68%),
+    radial-gradient(ellipse at 85% 20%,var(--world-glow),transparent 60%),
+    linear-gradient(175deg,var(--world-sky) 25%,var(--world-ground));
+}
+.game-screen[data-world]:not([data-world=hub]) .game-backdrop::after{display:none}
+.world-environment{position:absolute;inset:0;overflow:hidden;opacity:.72;pointer-events:none;
+  mask-image:radial-gradient(ellipse at 50% 40%,#0000 0,#0002 28%,#000 78%)}
+.world-environment *{position:absolute;box-sizing:border-box}
+.environment-horizon{inset:auto -10% 0;height:35%;background:linear-gradient(transparent,var(--world-ground));border-radius:50% 50% 0 0}
+.environment-grid{left:-30%;width:160%;bottom:-22%;height:58%;transform:perspective(500px) rotateX(52deg);transform-origin:center top;
+  background-image:linear-gradient(var(--world-line) 1px,transparent 1px),linear-gradient(90deg,var(--world-line) 1px,transparent 1px);
+  background-size:64px 64px;opacity:.25;mask-image:linear-gradient(transparent,#000 55%)}
+
+/* CAMP60: assembled platforms, instruction tracks, and training beacons. */
+.training-path{left:-8%;bottom:12%;width:116%;height:18%;border:2px dashed #72a18f;border-radius:50%;transform:rotate(-8deg);opacity:.6}
+.training-pad{width:clamp(110px,19vw,250px);height:clamp(75px,12vw,160px);background:linear-gradient(145deg,#d7eadb,#95bda7);border:3px solid #81a694;
+  border-radius:12px;transform:rotate(-17deg) skewX(20deg);box-shadow:-8px 12px 0 #7dada3, -8px 19px 0 #648b8733}
+.pad-one{left:-3%;bottom:18%}.pad-two{right:-4%;bottom:7%;transform:rotate(16deg) skewX(-20deg)}
+.training-pad i{height:25%;top:18%;background:#f0f6d4;border:2px solid #779983;border-radius:3px;width:18%;box-shadow:0 4px 0 #729481}
+.training-pad i:nth-child(1){left:12%}.training-pad i:nth-child(2){left:41%;top:40%}.training-pad i:nth-child(3){left:70%;top:63%}
+.training-pad::after{content:'';position:absolute;left:19%;top:43%;width:58%;height:30%;border-top:2px dashed #578573;border-right:2px dashed #578573;transform:rotate(18deg)}
+.instruction-beacon{width:16px;height:100px;background:linear-gradient(90deg,#689c96,#badbd0);border:2px solid #73998d;box-shadow:0 8px 0 #68988844}
+.instruction-beacon::after{content:'';position:absolute;width:37px;height:37px;border:3px solid #78a88f;border-radius:7px;background:#e1f2b9;left:-12px;top:-18px;transform:rotate(45deg);box-shadow:0 0 24px #e1f2b9}
+.beacon-one{left:7%;bottom:28%}.beacon-two{right:6%;bottom:21%;height:70px}
+
+/* FORT-57: masonry, crenellations, logic gates, and luminous circuits. */
+.castle-wall{width:clamp(130px,23vw,320px);height:clamp(150px,38vh,390px);bottom:0;border:3px solid #8987a5;border-radius:12px 12px 0 0;
+  background:repeating-linear-gradient(0deg,#0000 0 42px,#7f7e9e44 43px 45px),repeating-linear-gradient(90deg,#c1c0d6 0 62px,#acabc7 63px 66px);
+  box-shadow:9px 0 0 #83849f33;}
+.wall-left{left:-6%;transform:skewY(6deg)}.wall-right{right:-6%;transform:skewY(-6deg)}
+.castle-wall::before{content:'';position:absolute;left:-3px;right:-3px;top:-28px;height:31px;border-bottom:4px solid #9692ae;background:repeating-linear-gradient(90deg,#9692ae 0 25px,transparent 25px 40px);border-radius:6px 6px 0 0}
+.castle-gate{left:27%;bottom:0;width:48%;height:55%;border:9px solid #e0d8cf;border-bottom:0;border-radius:80px 80px 0 0;box-shadow:0 0 0 3px #9690ac;
+  background:repeating-linear-gradient(90deg,#747192 0 17px,#9891ae 18px 20px)}
+.castle-gate::before{content:'';position:absolute;inset:20% 48% 0 45%;background:#d8c392;box-shadow:0 0 15px #e4ce9c}
+.decision-circuit{height:26%;width:16%;border:3px solid #ad9cd0;border-right:0;border-bottom:0;border-radius:16px 0 0 0;opacity:.7;filter:drop-shadow(0 0 7px #d8cbea)}
+.decision-circuit::before,.decision-circuit::after{content:'';position:absolute;width:13px;height:13px;background:#e9d7ad;border:3px solid #9483b2;border-radius:50%}
+.decision-circuit::before{top:-8px;right:-4px}.decision-circuit::after{left:-8px;bottom:-4px}
+.circuit-one{left:4%;top:18%}.circuit-two{right:3%;top:24%;transform:rotate(180deg)}
+
+/* PAGEM: page-shaped buildings and connections across a digital city. */
+.page-building{bottom:5%;width:clamp(90px,15vw,200px);height:clamp(130px,30vh,310px);border:3px solid #5898ac;border-radius:12px 12px 3px 3px;
+  background:linear-gradient(#e2f4f7 0 24px,#78b5c577 25px 29px,#bcdee9 30px);box-shadow:9px 10px 0 #438f9e33;transform:skewY(-4deg)}
+.page-building::before{content:'';position:absolute;top:9px;left:9px;width:6px;height:6px;background:#72abae;border-radius:50%;box-shadow:12px 0 #e4bc88,24px 0 #bd9ed5}
+.page-building::after{content:'';position:absolute;inset:46px 13px 17px;background:repeating-linear-gradient(0deg,#0000 0 22px,#77a7bc99 23px 25px);opacity:.65}
+.page-building i{width:28%;height:20%;background:#e3f9ed;border:2px solid #6fabb1;border-radius:4px;z-index:1}
+.page-building i:nth-child(1){top:23%;left:12%}.page-building i:nth-child(2){top:49%;right:12%}.page-building i:nth-child(3){bottom:10%;left:12%;background:#d0c6e7}
+.building-one{left:-5%;height:44%}.building-two{left:10%;bottom:-6%;height:29%;width:11%;opacity:.7}
+.building-three{right:-4%;height:37%;transform:skewY(4deg)}.building-four{right:13%;height:25%;bottom:-5%;width:11%;opacity:.7}
+.network-links{left:-5%;bottom:17%;width:110%;height:42%;border:2px dashed #5eabb4;border-radius:50% 35%;transform:rotate(5deg);opacity:.65}
+.network-links::before,.network-links::after{content:'';position:absolute;inset:20% 12%;border:2px solid #75bdc2;border-radius:40% 60%;transform:rotate(-13deg)}
+.network-links::after{inset:40% 6% -20%;transform:rotate(9deg);border-style:dashed}
+
+/* LAB22: experiment benches, flasks, data matrices, and repeating loops. */
+.environment-lab22 .environment-grid{background-size:40px 40px;opacity:.3}
+.lab-bench{bottom:6%;height:18px;width:clamp(140px,23vw,300px);border:3px solid #7f96ba;border-radius:5px;background:#ceddec;box-shadow:0 8px 0 #718ba766}
+.lab-bench::after{content:'';position:absolute;top:100%;height:100px;left:15%;right:15%;border:12px solid #95acc6;border-top:0;border-bottom:0}
+.bench-left{left:-3%}.bench-right{right:-3%;bottom:12%}
+.lab-flask{bottom:15px;width:70px;height:105px;background:linear-gradient(transparent 38%,#87c6b599 39%);border:3px solid #739da9;border-radius:38% 38% 22% 22%;box-shadow:inset 6px 0 #ffffff60}
+.lab-flask::before{content:'';position:absolute;left:30%;right:30%;height:36px;bottom:calc(100% - 5px);border:3px solid #739da9;border-bottom:0;background:#d7e8f6;border-radius:5px 5px 0 0}
+.lab-flask::after{content:'';position:absolute;left:20%;top:53%;width:6px;height:6px;border-radius:50%;background:#eaf9e9;box-shadow:23px 10px #eaf9e9,10px 25px #eaf9e9}
+.flask-one{left:12%}.flask-two{right:5%;width:58px;height:82px;background:linear-gradient(transparent 38%,#ac9edc99 39%)}
+.data-matrix{bottom:24px;right:15%;width:130px;height:130px;border:5px solid #738fb3;border-radius:12px;transform:rotate(8deg);box-shadow:7px 7px 0 #859cc044;
+  background:repeating-linear-gradient(0deg,#0000 0 25px,#7792b8 25px 29px),repeating-linear-gradient(90deg,#d3e6ed 0 25px,#7792b8 25px 29px)}
+.data-matrix::after{content:'';position:absolute;width:23px;height:23px;left:29px;top:29px;background:#79b6a5;box-shadow:29px 29px #c6a0d3,0 58px #e8ce8e}
+.routine-orbit{width:110px;height:110px;border:3px dashed #8ba5c6;border-radius:50%;opacity:.65}
+.routine-orbit::after{content:'';position:absolute;width:15px;height:15px;top:-8px;left:44%;background:#a2d3bd;border:3px solid #779fae;border-radius:5px;transform:rotate(35deg)}
+.orbit-one{left:3%;top:17%}.orbit-two{right:4%;top:20%;width:75px;height:75px}
+
+/* DIMENSÃO: portals and an integrated core, without a busy central field. */
+.environment-dimensao .environment-grid{opacity:.16;transform:perspective(550px) rotateX(60deg) rotateZ(-9deg)}
+.dimension-stars{inset:0;background-image:radial-gradient(#fff 1.5px,transparent 2px),radial-gradient(#aa82bf 1px,transparent 2px);background-size:117px 103px,173px 147px;background-position:13px 39px,75px 21px;opacity:.75}
+.digital-portal{width:clamp(90px,18vw,240px);height:clamp(140px,28vw,360px);border:7px solid #9881c8;border-radius:50%;transform:rotate(-16deg);
+  background:radial-gradient(ellipse,#e9e5fa80 0,#d2c7eb66 50%,#b697d499 78%,transparent 79%);box-shadow:0 0 0 7px #d8d0ed,0 0 0 9px #a895c877,0 0 50px #bca5e4aa,inset 0 0 24px #f4ddf5}
+.digital-portal i{inset:12%;border:2px dashed #9677bc;border-radius:50%;animation:portal-orbit 35s linear infinite}
+.digital-portal i:nth-child(2){inset:23%;border-color:#c09ecb;border-style:solid;animation-direction:reverse;animation-duration:28s}
+.portal-one{left:-5%;top:24%}.portal-two{right:-4%;bottom:9%;transform:rotate(18deg);width:clamp(80px,15vw,210px);height:clamp(120px,23vw,310px)}
+.dimension-core{right:17%;bottom:8%;width:clamp(36px,7vw,88px);aspect-ratio:1;transform:rotate(45deg);background:linear-gradient(135deg,#e1c7e9,#a28bcf);border:3px solid #aa8fc8;box-shadow:0 0 30px #d5aee1,inset 0 0 20px #ffffff55}
+.dimension-core i{inset:-18%;border:2px solid #b595cf;border-radius:15%;animation:portal-orbit 40s linear infinite}
+.dimension-core i:nth-child(2){inset:-38%;border-style:dashed;animation-direction:reverse}
+@keyframes portal-orbit{to{transform:rotate(360deg)}}
+
+/* CAMP60's map belongs to the same training environment. */
+[data-world=camp60] .terrain-map{background:#dcebdc;border-color:#87afa0;box-shadow:3px 4px 0 #5c817a33}
+[data-world=camp60] .terrain-base{fill:#dcebdc}
+[data-world=camp60] .terrain-sector{fill:#b3d0c6}
+[data-world=camp60] .terrain-network{fill:#c5dbec}
+[data-world=camp60] .level-trail,[data-world=camp60] .mobile-level-trail{stroke:#668f7d}
+.world-preview-scene{display:flex;align-items:center;justify-content:center;min-height:100%;padding:10px 0}
+.world-preview-window{max-width:620px;width:100%;text-align:center;background:#fffaf4ed}
+.world-preview-window .window-content{padding:22px 30px 28px}
+.world-preview-art{width:220px;height:170px;margin:0 auto 12px}
+.world-preview-art .region-art{width:100%;height:100%}
+.world-preview-window .screen-title{margin-bottom:16px}
+.world-preview-window .screen-title p{font-size:17px;font-family:var(--game-font);color:#79618e}
+.world-preview-window .window-content>p{font-size:15px;line-height:1.6;max-width:470px;margin-left:auto;margin-right:auto}
+.preview-subject{display:flex;align-items:center;justify-content:center;gap:9px;margin:18px 0;padding:11px;background:#ede7f4;border:1px solid #d2c3e0;border-radius:10px;font-size:14px;color:#675180}
+.world-preview-window .preview-state{font-size:13px;background:#fff0d4;border:1px solid #e6c894;color:#856327;border-radius:10px;padding:12px}
+.preview-state .icon{width:17px;height:17px;margin-right:4px}
+.preview-region{background:#f2eef8;border-color:#c6b6d8;color:#6b508c;box-shadow:0 3px 0 #ad9ac3}
+@media(max-width:600px){
+  .region-node.future>small{display:none}
+  .preview-region{font-size:9px;margin-top:4px;padding:3px 8px}
+  .world-environment{opacity:.6;mask-image:radial-gradient(ellipse at 50% 36%,#0000 0,#0002 32%,#000 84%)}
+  .environment-grid{background-size:43px 43px;height:48%;bottom:-18%}
+  .training-pad{width:120px;height:80px}.pad-one{left:-12%;bottom:20%}.pad-two{right:-13%;bottom:8%}
+  .instruction-beacon{height:60px;width:12px}.instruction-beacon::after{width:27px;height:27px;left:-10px}
+  .beacon-one{left:3%;bottom:28%}.beacon-two{right:2%;bottom:17%}
+  .castle-wall{width:105px;min-width:0;height:30%}.wall-left{left:-15%}.wall-right{right:-15%}
+  .decision-circuit{width:20%;height:20%}.circuit-one{left:-2%}.circuit-two{right:-2%}
+  .page-building{width:90px}.building-one{left:-12%;height:34%}.building-three{right:-12%;height:29%}
+  .building-two{left:3%;width:65px;height:18%;bottom:-6%}.building-four{right:5%;width:70px;height:15%}
+  .lab-bench{width:140px}.bench-left{left:-17%}.bench-right{right:-17%}
+  .lab-flask{width:50px;height:80px}.flask-two{width:40px;height:60px}
+  .data-matrix{height:90px;width:90px;right:5%;bottom:20px}
+  .routine-orbit{width:75px;height:75px}.orbit-one{left:-9%;top:23%}.orbit-two{right:-7%;top:18%}
+  .digital-portal{width:110px;height:180px}.portal-one{left:-17%;top:27%}.portal-two{right:-16%;bottom:14%;width:95px;height:155px}
+  .dimension-core{right:9%;bottom:6%;width:36px}
+  .world-preview-window .window-content{padding:18px 22px 22px}
+  .world-preview-art{width:170px;height:clamp(70px,13dvh,125px);margin-bottom:10px}
+  .world-preview-window .screen-title p{font-size:16px}
+  .world-preview-window .window-content>p{font-size:14px}
+  .preview-subject{font-size:13px;margin:14px 0}
+}
+@media(max-height:600px){
+  .world-preview-scene{min-height:0;margin:auto}
+  .world-preview-art{width:145px;height:100px;margin-bottom:8px}
+  .world-preview-window .window-content{padding:15px 24px 20px}
+  .world-preview-window .screen-title{margin-bottom:10px}
+  .world-preview-window .window-content>p{font-size:14px;margin-bottom:10px}
+  .preview-subject{margin:12px 0;padding:8px}
+  .world-preview-window .preview-state{padding:9px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.digital-portal i,.dimension-core i{animation:none}}
+
+/* Shared screens show the whole universe, rather than inheriting one region. */
+.game-screen[data-world=hub] .game-backdrop{
+  background:radial-gradient(ellipse at 50% 40%,#fafcff 0,#fafcffb3 32%,transparent 78%),
+    radial-gradient(ellipse at 8% 18%,#dddfee,transparent 48%),
+    radial-gradient(ellipse at 88% 12%,#e3d9f1,transparent 48%),
+    radial-gradient(ellipse at 4% 85%,#cfe7d8,transparent 46%),
+    radial-gradient(ellipse at 90% 88%,#c9e9ed,transparent 50%),
+    linear-gradient(180deg,#edf0fa,#dfe9f3);
+}
+.game-screen[data-world=hub] .game-backdrop::after{display:none}
+.hub-worlds{position:absolute;inset:0;overflow:hidden;pointer-events:none;
+  mask-image:radial-gradient(ellipse at 50% 42%,#0000 0,#0005 38%,#000 82%)}
+.hub-region{position:absolute;container-type:size}
+.hub-region .world-environment{mask-image:none;opacity:.8}
+.hub-region .environment-horizon,.hub-region .environment-grid{display:none}
+.hub-camp60{left:-2%;bottom:-3%;width:32%;height:41%}
+.hub-fort57{left:-2%;top:-3%;width:27%;height:42%}
+.hub-pagem{right:-2%;bottom:-4%;width:31%;height:46%}
+.hub-lab22{left:27%;bottom:-9%;width:43%;height:31%}
+.hub-dimensao{right:-3%;top:-5%;width:31%;height:47%}
+.hub-camp60 .training-path{bottom:17%;height:32%}
+.hub-camp60 .training-pad{width:41%;height:29%}
+.hub-camp60 .pad-one{left:5%;bottom:29%}.hub-camp60 .pad-two{right:3%;bottom:11%}
+.hub-camp60 .instruction-beacon{height:22%;width:12px}
+.hub-camp60 .beacon-one{left:13%;bottom:48%}.hub-camp60 .beacon-two{right:8%;bottom:32%}
+.hub-fort57 .castle-wall{width:42%;height:63%;min-height:0}
+.hub-fort57 .wall-left{left:1%;bottom:6%}.hub-fort57 .wall-right{right:3%;bottom:19%;height:51%}
+.hub-fort57 .decision-circuit{width:33%;height:24%}
+.hub-fort57 .circuit-one{left:11%;top:13%}.hub-fort57 .circuit-two{right:2%;top:13%}
+.hub-pagem .page-building{width:29%;min-height:0}
+.hub-pagem .building-one{left:8%;height:53%}.hub-pagem .building-two{left:35%;width:20%;height:35%;bottom:1%}
+.hub-pagem .building-three{right:1%;height:76%;bottom:6%}.hub-pagem .building-four{right:25%;width:18%;height:40%;bottom:0}
+.hub-pagem .network-links{bottom:28%;height:49%}
+.hub-lab22 .lab-bench{width:43%;bottom:24%;height:15px}
+.hub-lab22 .bench-left{left:3%}.hub-lab22 .bench-right{right:3%;bottom:31%}
+.hub-lab22 .lab-flask{height:34cqh;width:13cqw;min-height:45px;max-height:100px;max-width:65px}
+.hub-lab22 .flask-one{left:12%}.hub-lab22 .flask-two{height:26cqh;right:6%;width:11cqw}
+.hub-lab22 .data-matrix{width:min(22cqw,110px);height:min(40cqh,110px);right:14%;bottom:22px}
+.hub-lab22 .orbit-one{top:9%;left:14%;width:75px;height:75px}
+.hub-lab22 .orbit-two{top:4%;right:14%;width:60px;height:60px}
+.hub-dimensao .digital-portal{width:40%;height:69%;min-height:0}
+.hub-dimensao .portal-one{left:4%;top:17%}
+.hub-dimensao .portal-two{right:2%;bottom:6%;width:31%;height:52%}
+.hub-dimensao .dimension-core{right:35%;bottom:7%;width:14%}
+
+/* Exit stays a visible labeled control, including on narrow screens. */
+.hud-logout{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:43px;padding:8px 12px;flex-shrink:0;
+  border:1px solid #a797c570;border-radius:11px;background:#fff8;color:#574473;font-size:13px;font-weight:650;box-shadow:0 2px 0 #79639320}
+.hud-logout:hover{background:#fffc;border-color:#9a81b4}
+.hud-logout .icon{width:18px;height:18px}
+.hud-left .player-chip{overflow:hidden;flex-shrink:1}
+.feedback-inner>.feedback-exit{display:flex;margin:10px auto 0;width:max-content;min-width:0;min-height:40px;font-size:12px;padding:8px 12px}
+.feedback-exit .icon{width:16px;height:16px}
+@media(max-width:600px){
+  .hud-logout{min-height:36px;padding:7px 8px;gap:4px;font-size:12px;border-radius:9px}
+  .hud-logout .icon{width:16px;height:16px}
+  .hub-worlds{mask-image:radial-gradient(ellipse at 50% 42%,#0002 0,#0006 42%,#000 88%)}
+  .hub-region .world-environment{opacity:.65}
+  .hub-fort57{width:47%;height:25%;left:-10%;top:2%}
+  .hub-dimensao{width:44%;height:31%;right:-8%;top:0}
+  .hub-camp60{width:48%;height:30%;left:-5%;bottom:0}
+  .hub-pagem{width:48%;height:36%;right:-5%;bottom:-3%}
+  .hub-lab22{width:40%;height:31%;left:-18%;bottom:33%}
+  .hub-fort57 .castle-wall{border-width:2px}
+  .hub-fort57 .castle-wall::before{height:20px;top:-19px;background-size:auto}
+  .hub-fort57 .castle-gate{border-width:5px}
+  .hub-fort57 .decision-circuit{display:none}
+  .hub-camp60 .training-pad{border-width:2px}
+  .hub-camp60 .instruction-beacon::after{height:20px;width:20px;left:-7px}
+  .hub-pagem .page-building{border-width:2px}
+  .hub-pagem .page-building::after{inset:38px 5px 9px}
+  .hub-pagem .page-building i{border-width:1px}
+  .hub-lab22 .lab-bench{width:75%;right:0;left:auto;bottom:25%}
+  .hub-lab22 .bench-right{display:none}
+  .hub-lab22 .lab-flask{width:32px;height:55px;right:4%;left:auto}
+  .hub-lab22 .flask-two{right:48%;width:27px;height:45px}
+  .hub-lab22 .routine-orbit{width:44px;height:44px;top:12%;left:45%}
+  .hub-lab22 .orbit-two{display:none}
+  .hub-dimensao .digital-portal{border-width:4px;box-shadow:0 0 0 4px #d8d0ed,0 0 28px #bca5e4aa}
+}
+@media(max-height:450px){
+  .hud-logout{min-height:34px;padding-top:6px;padding-bottom:6px}
+  .hub-fort57{top:-10%;height:54%}
+  .hub-dimensao{top:-14%;height:66%}
+  .hub-lab22{bottom:-15%;height:38%}
+}

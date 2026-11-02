@@ -1,0 +1,26 @@
+{
+  "id": "meridiana",
+  "version": 1,
+  "prompt": "última_aurora>",
+  "initialOutput": ["Última Aurora · terminal de serviço", "Use ajuda para consultar os comandos disponíveis."],
+  "unknownOutput": ["Comando não encontrado. Use ajuda."],
+  "commands": [
+    {"input": "ajuda", "action": "help", "output": ["Comandos disponíveis:"]},
+    {
+      "input": "status",
+      "action": "status",
+      "output": ["REDE NORTE: INATIVA", "CAUSA: PAINEL DE DISTRIBUIÇÃO AUSENTE", "CÉLULAS DISPONÍVEIS: 3"],
+      "conditions": [
+        {"flag": "M04_OK", "line": 0, "text": "REDE NORTE: ATIVA"},
+        {"flag": "M02_OK", "line": 1, "text": "INTERFACE: DISPONÍVEL"}
+      ]
+    },
+    {"input": "listar energia", "action": "print", "output": ["energia/", "  aviso.txt"]},
+    {
+      "input": "ler energia/aviso.txt",
+      "action": "diagnostic",
+      "output": ["DIAGNÓSTICO DO SETOR NORTE", "O arquivo local painel.html está danificado.", "Reconstrua a interface do painel de distribuição para verificar a rede.", "DIAGNÓSTICO IDENTIFICADO — use Abrir editor para continuar."]
+    },
+    {"input": "limpar", "action": "clear", "output": []}
+  ]
+}

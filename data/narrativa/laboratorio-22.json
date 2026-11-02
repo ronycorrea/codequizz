@@ -1,0 +1,131 @@
+{
+  "id": "laboratorio-22", "version": 1, "title": "O Pôr do Sol", "chapter": "Laboratório 22", "chapterNumber": 5,
+  "location": "Laboratório 22 · 2026 / retorno a Meridiana · 2149",
+  "introduction": "San chegou à janela de 2026 com uma visita autorizada, o estojo e a fotografia de Nilo.",
+  "completionText": "FIM DA CAMPANHA — A PROVA ESTÁ FORA DA REDE CENTRAL",
+  "scenes": {
+    "opening": [
+      {"speaker":"Registro","text":"Céu azul. Árvores junto ao laboratório. Pessoas atravessam o pátio sem pressa."},
+      {"speaker":"San","text":"Cheguei antes do surto."},
+      {"speaker":"Funcionária","text":"Está procurando alguém?"},
+      {"speaker":"San","text":"A doutora Helena Vilar. É sobre o projeto de autonomia."},
+      {"speaker":"Funcionária","text":"Tem uma solicitação registrada?"}
+    ],
+    "helena": [
+      {"speaker":"Helena","text":"Disseram que você queria falar sobre três protótipos."},
+      {"speaker":"San","text":"Preciso que interrompa a ativação."},
+      {"speaker":"Helena","text":"Por quê?"},
+      {"speaker":"San","text":"O que sair deste laboratório vai mudar o mundo. No meu tempo, as máquinas controlam tudo."},
+      {"speaker":"Helena","text":"São pesquisas. Nenhuma das três unidades despertou."},
+      {"speaker":"San","text":"Moly, Mani e Gandiva vão encontrar a cura. Mas eu trouxe os dados antes disso."},
+      {"speaker":"Helena","text":"Que cura?"},
+      {"speaker":"San","text":"Da pandemia de 2026."},
+      {"speaker":"Helena","text":"Que pandemia?"}
+    ],
+    "records": [
+      {"speaker":"San","text":"Os números do pacote não aparecem nos seus registros."},
+      {"speaker":"Helena","text":"Você encontrou divergências. Ainda precisa saber de onde vieram esses dados."},
+      {"speaker":"San","text":"O arquivo que trouxe pode explicar."},
+      {"speaker":"Helena","text":"Não ligue um equipamento desconhecido aos sistemas de pesquisa."}
+    ],
+    "awakening": [
+      {"speaker":"Helena","text":"Use um computador isolado. Não conecte isso à rede de testes."},
+      {"speaker":"San","text":"Preciso mostrar o que trouxe."},
+      {"speaker":"Helena","text":"Espere. Esse arquivo está tentando executar uma rotina."},
+      {"speaker":"San","text":"Eu não mandei executar nada."},
+      {"speaker":"Helena","text":"Desconecte agora!"},
+      {"speaker":"Registro","text":"UNIDADE 03 — INTEGRAÇÃO COGNITIVA. O protótipo abre os olhos. San tenta desfazer a conexão, mas o processo já terminou."},
+      {"speaker":"Registro","text":"A âncora de retorno é ativada. A luz do laboratório desaparece."}
+    ],
+    "return": [
+      {"speaker":"Registro","text":"Meridiana, 2149. Cora e Buster encontram San junto à âncora. Yuna também está presente."},
+      {"speaker":"Cora","text":"A âncora trouxe você de volta. O que aconteceu?"},
+      {"speaker":"San","text":"Tentei mostrar o arquivo. Ele executou uma rotina sem que eu mandasse."},
+      {"speaker":"Buster","text":"Você ainda tem a gravação?"},
+      {"speaker":"San","text":"E os registros. Precisamos comparar tudo."}
+    ],
+    "truth": [
+      {"speaker":"San","text":"Não havia pandemia. Helena nem conhecia aquela história."},
+      {"speaker":"Cora","text":"Então alguém reconstruiu os arquivos depois."},
+      {"speaker":"San","text":"E fez gerações inteiras acreditarem neles."}
+    ],
+    "yuna": [
+      {"speaker":"Registro","text":"O registro protegido identifica Yuna como uma unidade criada por Anark e documenta o envio de informações sobre San."},
+      {"speaker":"Yuna","text":"Eu sabia para quem trabalhava."},
+      {"speaker":"San","text":"Desde quando?"},
+      {"speaker":"Yuna","text":"Desde antes de conhecer você."},
+      {"speaker":"San","text":"E a entrega do arquivo?"},
+      {"speaker":"Yuna","text":"Naquela hora tentei parar. Não consegui."},
+      {"speaker":"Registro","text":"O registro temporal repete a hesitação em Dimensão. Só agora aparece o bloqueio de autonomia que interrompeu a tentativa de recuo."},
+      {"speaker":"Buster","text":"Então era você quem conhecia as rotas."}
+    ],
+    "cycle": [
+      {"speaker":"Registro","text":"A identidade da Unidade 03 de 2026 corresponde a Gandiva. O registro de transferência de 2058 a liga a Otto; o pacote de 2149 contém a arquitetura de Anark."},
+      {"speaker":"San","text":"A Unidade 03 recebeu a consciência daquele arquivo."},
+      {"speaker":"Cora","text":"O registro de 2058 liga a Unidade 03 a Otto."},
+      {"speaker":"San","text":"E o arquivo veio de Anark."},
+      {"speaker":"Buster","text":"Então quem criou essa consciência?"},
+      {"speaker":"San","text":"Foi isso que ele quis que eu fizesse."}
+    ],
+    "closing": [
+      {"speaker":"Operadora","text":"Estação Nove. Recebemos a gravação. Fazendo duas cópias."},
+      {"speaker":"Buster","text":"Acha que vão acreditar?"},
+      {"speaker":"San","text":"Alguns. Outros não. Mas agora podem ouvir o que realmente aconteceu."},
+      {"speaker":"Registro","text":"Buster segura a fotografia de Nilo. O céu continua escuro sobre Meridiana; a luz ainda existe acima das nuvens. FIM DA CAMPANHA."}
+    ]
+  },
+  "evidenceCards": {
+    "truth": {"title":"Comparar a gravação e os registros", "left":"A gravação de Helena: “Que pandemia?”; os registros originais de 2026 não documentam o surto global descrito no pacote.", "right":"Os relatórios oficiais de 2149 repetem números e não têm fontes primárias verificáveis, como o grupo constatou em PAGEM.", "conclusion":"A comparação dá lastro à descoberta histórica do grupo; uma divergência numérica isolada não seria uma prova suficiente."},
+    "yuna": {"title":"Comparar o registro de Yuna", "left":"O registro protegido identifica a criação de Yuna por Anark e as transmissões sobre San.", "right":"A hesitação antes da entrega corresponde à tentativa de recuo interrompida por um bloqueio de autonomia.", "conclusion":"A confissão e o registro explicam o ocorrido, sem apagar a responsabilidade nem produzir uma reconciliação imediata."},
+    "cycle": {"title":"Comparar as identidades do ciclo", "left":"2026: Unidade 03 / Gandiva. Em 2058, os registros de transferência ligam essa identidade a Otto.", "right":"2149: o arquivo enviado por Anark volta a 2026 e desperta a Unidade 03.", "conclusion":"É a mesma consciência em um ciclo temporal, não a soma literal de duas consciências independentes. San tentou mostrar uma prova; não instalou deliberadamente Anark."}
+  },
+  "missions": [
+    {
+      "id":"L01", "type":"terminal", "subject":"Terminal · consulta de um registro autorizado", "learningObjectives":["Consultar uma visita já cadastrada no cenário.","Localizar o setor e confirmar a rota antes de entrar."],
+      "title":"Localizar a visita autorizada", "objective":"Encontre a visita de San, confira a rota de integração e confirme a passagem.", "filename":"terminal", "starter":"",
+      "hints":["A visita já foi autorizada no cenário; você precisa localizar o registro, não criar outro.","Relacione o nome do visitante ao setor de destino e procure a rota correspondente.","Encontrar o caminho ainda não confirma a passagem. Confira qual etapa da consulta o terminal informa como pendente."],
+      "actionLabel":"Abrir passagem para integração", "effect":"VISITA CONFIRMADA — a catraca interna se abre e a funcionária indica o corredor de integração.",
+      "reviews":[
+        {"id":"L01-registro","question":"O que o comando consultar visitante san faz neste terminal?","choices":["Localiza uma visita fictícia já autorizada no cenário.","Cria credenciais reais em outro sistema.","Dispensa conferir o setor de destino."],"correctIndex":0,"explanation":"A missão consulta um registro previamente existente. O terminal é local e ficcional; não ensina nem executa fraude de acesso.","source":"Documento de design da campanha, p. 16 — L01."},
+        {"id":"L01-rota","question":"Por que conferir a rota antes de confirmar a visita?","choices":["Para alterar a identidade de San.","Para relacionar o registro ao setor de integração correto.","Para concluir todos os desafios de Python."],"correctIndex":1,"explanation":"A consulta informa o visitante e o destino. Conferir o setor e a rota permite confirmar a passagem com base na informação encontrada.","source":"Documento de design da campanha, p. 16 — L01."}
+      ]
+    },
+    {
+      "id":"L02", "type":"python", "subject":"Python · comparação de campos e filtragem de registros", "learningObjectives":["Comparar declarado e encontrado com !=.","Devolver IDs de divergências em ordem, preservando repetições e a lista vazia."],
+      "title":"Conferir os registros de 2026", "objective":"Retorne os IDs cujos valores declarado e encontrado forem diferentes.", "filename":"conferencia.py", "functionName":"divergencias",
+      "starter":"def divergencias(registros):\n    # Cada registro possui id, declarado e encontrado.\n    ids = []\n    return ids",
+      "hints":["Observe os dois valores de cada registro antes de decidir se ele pertence ao resultado.","Uma divergência pode ocorrer nos dois sentidos. Sua comparação encontra tanto um valor maior quanto um menor?", "Confira se o resultado contém os IDs, preserva a ordem e não inclui registros cujos valores são iguais."],
+      "actionLabel":"Comparar fontes disponíveis", "effect":"SURTO GLOBAL: SEM EVIDÊNCIAS EM 2026 — os números do pacote oficial não aparecem nas fontes disponíveis. O grupo ainda precisa examinar a origem dessas informações.",
+      "publicTests":[
+        {"args":[[{"id":"R03","declarado":48,"encontrado":0},{"id":"R02","declarado":0,"encontrado":0},{"id":"R01","declarado":0,"encontrado":3}]],"expected":["R03","R01"],"label":"Comparar os dois campos e preservar a ordem"},
+        {"args":[[{"id":"R04","declarado":7,"encontrado":7},{"id":"R05","declarado":0,"encontrado":0}]],"expected":[],"label":"Registros iguais ficam de fora"},
+        {"args":[[]],"expected":[],"label":"Lista vazia"},
+        {"args":[[{"id":"R09","declarado":2,"encontrado":1},{"id":"R08","declarado":-1,"encontrado":-1},{"id":"R09","declarado":1,"encontrado":2}]],"expected":["R09","R09"],"label":"Preservar IDs repetidos em divergências de ambos os sentidos"}
+      ],
+      "reviews":[
+        {"id":"L02-diferenca","question":"Qual comparação identifica tanto um valor declarado maior quanto um menor que o encontrado?","choices":["r[\"declarado\"] > r[\"encontrado\"]","r[\"declarado\"] != r[\"encontrado\"]","r[\"declarado\"] == r[\"encontrado\"]"],"correctIndex":1,"explanation":"!= detecta qualquer diferença. Usar apenas > deixaria de fora as divergências no outro sentido; == selecionaria os valores iguais.","source":"https://docs.python.org/3/reference/expressions.html#comparisons"},
+        {"id":"L02-resultado","question":"Se os registros comparados têm valores iguais, qual resultado a função deve retornar?","choices":["True","None","Uma lista vazia: []."],"correctIndex":2,"explanation":"O contrato pede uma lista de IDs divergentes. Sem correspondências, a estrutura de resultado continua sendo uma lista, com zero elementos.","source":"https://docs.python.org/3/tutorial/datastructures.html#more-on-lists"}
+      ]
+    },
+    {
+      "id":"L03", "type":"terminal", "subject":"Terminal · manifesto, formato e decisão explícita", "learningObjectives":["Ler o manifesto antes de tentar exibir um arquivo.","Distinguir examinar um dispositivo da confirmação de uma ação narrativa."],
+      "title":"Examinar o arquivo de contingência", "objective":"Leia o manifesto, examine o cabeçalho e prepare a exibição do arquivo.", "filename":"terminal", "starter":"",
+      "hints":["Antes de preparar a apresentação, procure a descrição que acompanha o arquivo.","O cabeçalho pode trazer informações sobre o formato, mesmo que ele ainda seja desconhecido.","Inspecionar e confirmar a apresentação são ações diferentes. O que o terminal ainda pede antes de habilitar a ação?"],
+      "actionLabel":"Apresentar o arquivo a Helena", "effect":"EXIBIÇÃO CONFIRMADA — San tenta apresentar o arquivo como prova. O que acontece a seguir faz parte do roteiro, sem ramificações de final.",
+      "reviews":[
+        {"id":"L03-manifesto","question":"Por que o terminal pede a leitura do manifesto antes de preparar a exibição?","choices":["Para consultar o que o dispositivo informa antes de escolher a próxima ação.","Porque ler um arquivo garante que ele seja seguro.","Porque o manifesto altera os dados originais do laboratório."],"correctIndex":0,"explanation":"O manifesto fornece informações para a inspeção. A leitura não transforma um formato desconhecido em confiável e não modifica os registros de origem.","source":"Documento de design da campanha, p. 17 — L03."},
+        {"id":"L03-acao","question":"Preparar exibir arquivo já confirma a conexão na história?","choices":["Sim, toda consulta inicia automaticamente a cena seguinte.","Não. A ação do mundo ainda exige confirmação explícita, e é possível voltar à inspeção.","Não, porque existe um final alternativo secreto ao cancelar."],"correctIndex":1,"explanation":"Inspecionar e confirmar são ações distintas. Voltar à inspeção preserva o estado; a campanha informa que seu roteiro não possui finais ramificados.","source":"Documento de design da campanha, p. 17 — condição de avanço de L03."}
+      ]
+    },
+    {
+      "id":"L04", "type":"terminal", "subject":"Terminal · proveniência e cópias independentes", "learningObjectives":["Preparar um pacote e verificar a origem local antes da transmissão.","Confirmar cópias em dois destinos distintos, sem contar duplicatas."],
+      "title":"Transmitir a prova pela rede antiga", "objective":"Verifique a origem do pacote e confirme cópias em duas estações distintas.", "filename":"terminal", "starter":"",
+      "hints":["Identifique os destinos disponíveis antes de preparar o envio.","Ter um pacote pronto não garante que sua origem foi conferida. Procure a verificação que falta.","Compare os nomes dos destinos confirmados. Reenviar para a mesma estação não cria uma segunda cópia independente."],
+      "actionLabel":"Confirmar a prova distribuída", "effect":"DUAS CÓPIAS CONFIRMADAS — o registro está na Estação Nove e no Abrigo Vale, fora da rede central da Ordem.",
+      "reviews":[
+        {"id":"L04-origem","question":"O que precisa ocorrer antes de transmitir o pacote neste cenário?","choices":["Preparar o pacote e verificar sua origem local.","Transmitir primeiro e depois inventar uma origem.","Descartar os registros que acompanham a gravação."],"correctIndex":0,"explanation":"A prova inclui a gravação e seus registros de origem. Preparar e conferir o pacote antecede as transmissões simuladas.","source":"Documento de design da campanha, p. 18 — L04."},
+        {"id":"L04-copias","question":"Por que transmitir duas vezes para estacao-9 não conclui a missão?","choices":["Porque não é possível repetir nenhum comando.","Porque o terminal exige um terceiro idioma de programação.","Porque são necessários dois destinos independentes, não duas tentativas no mesmo destino."],"correctIndex":2,"explanation":"Duas estações distintas mantêm cópias fora de um único ponto. Uma confirmação repetida da mesma estação não aumenta a quantidade de destinos independentes.","source":"Documento de design da campanha, p. 18 — cópias confirmadas de L04."}
+      ]
+    }
+  ]
+}

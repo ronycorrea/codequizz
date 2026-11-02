@@ -1,0 +1,15 @@
+{
+  "id": "pagem",
+  "version": 1,
+  "prompt": "pagem/acervo>",
+  "initialOutput": ["PAGEM · cópia local do catálogo histórico", "Use ajuda para consultar os comandos e conferir a origem dos registros."],
+  "unknownOutput": ["Comando não encontrado. Use ajuda."],
+  "commands": [
+    {"input": "ajuda", "action": "help", "output": ["Comandos disponíveis:"]},
+    {"input": "listar lotes", "action": "list", "output": ["LOTE-22 — resumos oficiais e relatório hospitalar recomposto.", "A consulta disponível neste terminal é abrir lote-22."]},
+    {"input": "abrir lote-22", "action": "open", "output": ["LOTE-22 / REGISTROS DISPONÍVEIS", "R-01 — Brasil / 2026-11-04 / distribuição 48, 32, 20 / TIPO=RESUMO", "R-02 — Noruega / 2027-03-18 / distribuição 48, 32, 20 / TIPO=RESUMO", "R-03 — Chile / 2028-07-09 / distribuição 48, 32, 20 / TIPO=RESUMO", "H-22 — relatório hospitalar / TIPO=TRANSCRICAO / fonte primária não informada.", "Use comparar versoes e verificar origem para conferir os registros."]},
+    {"input": "comparar versoes", "action": "compare", "output": ["COMPARAÇÃO: R-01 × R-02 × R-03", "Os países e as datas diferem, mas a distribuição se repete: 48, 32, 20.", "Os registros não incluem assinaturas digitais de origem.", "A repetição pede investigação; ainda não demonstra o que ocorreu."], "missingOutput": ["Abra lote-22 antes de comparar suas versões."]},
+    {"input": "verificar origem", "action": "verify", "output": ["ORIGEM / LOTE-22", "R-01, R-02 e R-03: assinaturas digitais de origem ausentes.", "H-22: TIPO=TRANSCRICAO; ORIGINAL NÃO LOCALIZADO.", "A fonte primária ainda não está disponível. Compare as versões antes de abrir a consulta histórica."], "missingOutput": ["Abra lote-22 antes de verificar a origem dos documentos."]},
+    {"input": "limpar", "action": "clear", "output": []}
+  ]
+}
