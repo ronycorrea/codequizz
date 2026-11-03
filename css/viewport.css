@@ -46,36 +46,36 @@ html,body{width:100%;height:100%;overflow:hidden}
 .menu-rewards{flex-wrap:wrap;justify-content:center;gap:14px}
 
 /* Both campaigns fit the stage. Container units account for width AND height. */
-.campaign-scene{height:100%;min-height:0;display:flex;flex-direction:column;flex:1}
-.world-campaign{height:auto;min-height:0;flex:1;container-type:size;margin:0 6px 6px}
-.region-node{width:clamp(130px,23cqw,265px);gap:0}
-.region-node .region-art{width:100%;height:clamp(55px,26cqh,185px)}
-.region-node>strong{font-size:clamp(21px,6cqh,36px);margin-top:-16px;-webkit-text-stroke-width:3px}
-.region-progress{min-height:25px;font-size:14px;margin-top:6px;padding:4px 10px}
-.region-node.future .region-progress{font-size:10px}
-.region-node>small{font-size:10px;line-height:1.3;margin-top:4px}
-.enter-region{font-size:10px;margin-top:5px;padding:4px 10px}
-.level-scene{height:100%;min-height:0;display:flex;flex-direction:column;flex:1}
-.map-heading{margin:0 0 10px;padding:0 4px;flex:none}
-.map-heading h1{font-size:36px}
-.campaign-counter{font-size:28px;padding:6px 14px}
-.terrain-map{height:auto;min-height:0;flex:1;container-type:size;box-shadow:3px 4px 0 #54387126}
-.terrain-region{width:clamp(70px,18cqh,170px)}
-.terrain-start{width:clamp(70px,21cqh,180px);top:-12px;left:0}
-.level-node{width:clamp(83px,12cqw,135px);gap:3px}
-.phase-flag{height:clamp(26px,10cqh,56px);min-width:34px}
-.phase-flag>.icon{height:clamp(26px,10cqh,56px);width:clamp(26px,10cqh,56px)}
-.phase-flag>b{font-size:clamp(10px,3cqh,15px);top:22%;right:20%}
-.level-node>strong{font-size:clamp(11px,3cqh,15px);padding:3px 6px;max-width:100%;line-height:1.15}
-.level-node>small{font-size:7px;letter-spacing:.3px;padding:3px 5px}
-.level-node .stars .icon{height:clamp(10px,3cqh,13px);width:clamp(10px,3cqh,13px)}
-.mobile-level-trail{display:none;stroke:#5d3d6a;stroke-width:4;stroke-dasharray:5 9;stroke-linecap:round;fill:none}
-.map-bottom{flex:none;margin-top:8px;padding:9px 12px;font-size:10px;gap:8px}
-.phase-directory{flex:none;margin:10px 0 0;min-height:0}
-.phase-directory summary{padding:8px 12px;font-size:15px}
-.level-scene:has(.phase-directory[open]) .terrain-map{display:none}
-.phase-directory[open]{flex:1;display:flex;flex-direction:column;overflow:auto;padding:0 4px 8px}
-.phase-directory .phase-list{margin-top:12px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Keep the question, answers, and powers visible together. */
 .quiz-scene{height:100%;min-height:0;margin:0 auto;display:flex;flex-direction:column;flex:1}
@@ -169,47 +169,47 @@ html,body{width:100%;height:100%;overflow:hidden}
   .hex-0,.hex-3{left:18%}.hex-2,.hex-5{left:82%}
   .menu-checkpoint{font-size:10px;padding:10px;min-height:46px;margin-top:12px;gap:7px}
   .menu-checkpoint .text{min-height:40px;font-size:10px}
-  .campaign-scene .screen-title{margin-top:0;margin-bottom:10px}
-  .world-campaign{height:auto;margin:0;min-height:0}
-  .world-campaign::before{display:none}
-  .region-node{width:clamp(122px,43cqw,210px)}
-  .region-node .region-art{width:100%;height:clamp(54px,18cqh,135px)}
-  .region-node>strong{font-size:clamp(22px,5cqh,29px);margin-top:-12px;-webkit-text-stroke-width:3px}
-  .region-node>small{font-size:9px;max-width:100%;padding:3px;line-height:1.25}
-  .region-progress{min-height:24px;margin-top:5px;padding:3px 7px;font-size:13px}
-  .region-node.future .region-progress{font-size:9px}
-  .region-camp{left:27%!important;top:20%!important}
-  .region-fort{left:73%!important;top:20%!important}
-  .region-city{left:27%!important;top:51%!important}
-  .region-lab{left:73%!important;top:51%!important}
-  .region-dimension{left:50%!important;top:82%!important}
-  .map-heading{padding:0;margin-bottom:8px}
-  .map-heading h1{font-size:30px;margin-top:3px}
-  .chapter-label{font-size:7px;padding:4px 6px}
-  .campaign-counter{font-size:24px;padding:6px 10px}
-  .terrain-map{height:auto;min-height:0;border-radius:16px}
-  .terrain-map::after{display:none}
-  .terrain-detail .mobile-level-trail{display:block}
-  .terrain-detail .level-trail{display:none}
-  .terrain-start{left:-15px;top:-15px;width:clamp(60px,18cqh,100px)}
-  .terrain-destination{right:-13px;bottom:-10px;width:clamp(60px,18cqh,100px)}
-  .level-node{width:clamp(100px,39cqw,145px);gap:2px}
-  .phase-flag,.phase-flag>.icon{height:clamp(24px,8cqh,44px)}
-  .phase-flag>.icon{width:clamp(24px,8cqh,44px)}
-  .phase-flag>b{top:22%;right:20%;font-size:clamp(9px,2.5cqh,12px)}
-  .level-node>strong{font-size:clamp(11px,2.8cqh,13px);max-width:100%;padding:3px 5px}
-  .level-node>small{font-size:6px;padding:2px 4px}
-  .level-node:nth-child(odd){left:25%!important}
-  .level-node:nth-child(even){left:75%!important}
-  .level-node:nth-child(1),.level-node:nth-child(2){top:16%!important}
-  .level-node:nth-child(3),.level-node:nth-child(4){top:39%!important}
-  .level-node:nth-child(5),.level-node:nth-child(6){top:62%!important}
-  .level-node:nth-child(7),.level-node:nth-child(8){top:85%!important}
-  .map-bottom{flex-direction:row;align-items:center;gap:8px;padding:8px;font-size:8px}
-  .map-bottom>span{flex:1;gap:5px}
-  .map-bottom .icon{width:13px;height:13px}
-  .phase-directory{margin:8px 0 0}
-  .phase-directory summary{font-size:13px;padding:7px 10px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   .quiz-mission{padding:6px 10px;margin-bottom:8px;font-size:9px;gap:4px}
   .battle-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:44px minmax(0,1fr) auto;gap:8px}
   .character-stage{grid-column:1;grid-row:1;height:44px;padding:0 10px;flex-direction:row;justify-content:space-between}
@@ -272,12 +272,12 @@ html,body{width:100%;height:100%;overflow:hidden}
   .menu-rewards{padding:8px 12px}
   .screen-title h1{font-size:28px}
   .screen-title{margin-bottom:8px}
-  .map-heading h1{font-size:29px}
-  .campaign-counter{font-size:24px}
-  .map-heading{margin-bottom:6px}
-  .map-bottom{margin-top:6px;padding:6px 10px;font-size:9px}
-  .phase-directory{margin-top:6px}
-  .phase-directory summary{padding:6px 10px;font-size:13px}
+
+
+
+
+
+
   .question-window .window-bar,.answers-window .window-bar{display:none}
   .question-window .window-content{padding:10px 14px}
   .question-window h1{font-size:18px}
@@ -338,24 +338,24 @@ html,body{width:100%;height:100%;overflow:hidden}
   .menu-brand .game-logo>span{font-size:clamp(48px,16dvh,76px)}
   .screen-title>span,.screen-title p{display:none}
   .screen-title h1{font-size:25px}
-  .world-campaign{margin:0}
-  .region-node{width:clamp(105px,22cqw,190px)}
-  .region-node .region-art{height:22cqh;min-height:30px}
-  .region-node>strong{font-size:20px;margin-top:-8px}
-  .region-node>small,.enter-region{display:none}
-  .region-progress{margin-top:3px;min-height:20px;padding:2px 6px;font-size:11px}
-  .region-node.future .region-progress{font-size:8px}
-  .region-camp{left:17%!important;top:25%!important}
-  .region-fort{left:48%!important;top:25%!important}
-  .region-city{left:80%!important;top:25%!important}
-  .region-lab{left:32%!important;top:75%!important}
-  .region-dimension{left:67%!important;top:75%!important}
-  .world-campaign::before{display:none}
-  .level-node>small{font-size:6px;padding:1px 3px}
-  .level-node>strong{font-size:10px}
-  .map-heading .chapter-label,.map-bottom{display:none}
-  .map-heading h1{font-size:25px}
-  .campaign-counter{font-size:20px;padding:4px 10px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   .quiz-mission{padding:4px 10px;margin-bottom:6px;font-size:9px}
   .battle-layout{grid-template-columns:82px minmax(0,1fr) 128px;grid-template-rows:minmax(0,1fr);gap:12px}
   .character-stage{grid-column:1;grid-row:1;height:auto;flex-direction:column;background:none;border:0;justify-content:center;padding:0}
@@ -441,18 +441,18 @@ html,body{width:100%;height:100%;overflow:hidden}
   .screen-central .play-button.resume-button{font-size:clamp(16px,5.4vw,20px);gap:6px}
 
   /* Maps retain readable nodes; the main stage supplies the phone's scroll. */
-  .screen-worlds .campaign-scene,.screen-map .level-scene{height:auto;flex:0 0 auto;min-height:100%}
-  .screen-worlds .world-campaign{height:max(580px,calc(100dvh - 300px));min-height:580px;flex:none}
-  .screen-worlds .region-node>strong{font-size:clamp(21px,6vw,28px)}
-  .screen-map .terrain-map{height:max(560px,calc(100dvh - 300px));min-height:560px;flex:none}
-  .screen-map .level-node>small{font-size:8px}
-  .screen-map .level-node>strong{font-size:13px}
+
+
+
+
+
+
 }
 @media(max-height:650px) and (min-width:601px){
   .screen-central .menu-scene{height:auto;min-height:100%;flex:0 0 auto;padding:12px 0}
   .screen-central .menu-cluster{height:auto;min-height:0}
   .screen-central .hex-menu{height:240px;min-height:240px;flex:none}
-  .screen-worlds .campaign-scene,.screen-map .level-scene{height:auto;min-height:100%;flex:0 0 auto}
-  .screen-worlds .world-campaign{height:360px;min-height:360px;flex:none}
-  .screen-map .terrain-map{height:340px;min-height:340px;flex:none}
+
+
+
 }

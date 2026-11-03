@@ -3,18 +3,22 @@
 | Material | Local | Origem e finalidade |
 | --- | --- | --- |
 | Marca tipográfica | `js/game-art.js`, CSS | Composição em texto com sombras coloridas e formas sobrepostas, inspirada nos protótipos do autor |
-| Regiões e construções | `js/game-art.js`, função `regionArt` | Cinco ilustrações SVG originais para a campanha |
 | Personagens de corpo inteiro | `js/game-art.js`, função `character` | Explorador e androide em SVG com estados de resposta e movimento opcional |
 | Medalhas | `js/game-art.js`, função `medal` | Desenhos SVG originais de bronze, prata e ouro |
-| Cenários por mundo | `js/world-background.js`, `css/worlds.css` | Construções, redes, experimentos e portais originais desenhados com CSS, baseados nas direções visuais da seção 3 do GDD; sem arquivos de imagem externos |
-| Fundo das telas gerais | `js/world-background.js`, `css/worlds.css` | Composição original dos cinco cenários, distribuídos pelas bordas e combinados com gradientes suaves; reutiliza as formas CSS do projeto |
+| Cenário do menu do quiz | `assets/quiz/menu-background.png` | Edição da referência `codequizz_menu_pixel_art_revisado.png` fornecida pelo responsável, usando a ferramenta integrada `image_gen.imagegen`; remove a interface e preserva o cenário. Prompt e origem em [quiz/ARTWORK.md](quiz/ARTWORK.md) |
+| Símbolos dos conteúdos | `js/quiz-art.js`, função `topicArt` | Formas SVG locais para Python, HTML/CSS, Java, manutenção e conteúdos mistos, com versões coloridas e monocromáticas; sem fonte ou biblioteca de ícones externa |
+| Fundo das telas de estudo | `js/quiz-art.js`, função `studyBackdrop`, e `css/quiz-interface.css` | Ondas, curvas tracejadas, formas geométricas e símbolos vetoriais de programação com gradientes suaves |
+| Artes da entrada e miniatura da campanha | `assets/welcome/` | Imagens e vetores originais extraídos da exportação Figma enviada pelo responsável; origem e fontes em [welcome-LICENSES.txt](welcome-LICENSES.txt) |
 | Fonte Lilita One | `assets/fonts/LilitaOne-Regular.ttf` | Juan Montoreano, 2011; obtida no repositório oficial Google Fonts; licença SIL OFL 1.1 em `assets/fonts/OFL-LilitaOne.txt` |
+| Fontes Fredoka e Inter | `assets/fonts/Fredoka-Variable.ttf`, `assets/fonts/Inter-Variable.ttf` | Distribuição local acompanhada das licenças `OFL-Fredoka.txt` e `OFL-Inter.txt`; origem em [welcome-LICENSES.txt](welcome-LICENSES.txt) |
 | Dois avatares em pixels | `js/ui.js`, função `avatar` | Desenhos SVG originais para os perfis; sem atributos de jogo |
 | Ícones | `js/ui.js`, catálogo `paths` | Traços SVG originais para navegação e ações |
 | Favicon | `assets/icons/favicon.svg` | Desenho original com símbolo de código |
 | Música e sons | `js/audio.js` | Composição original em ré menor, a 112 BPM, com melodia, acordes, baixo e percussão sintetizados; efeitos originais por ação, sem gravações ou bibliotecas externas |
 
-As cores, mundos e a combinação de elementos digitais seguem os protótipos do GDD e os dez PNGs fornecidos pelo autor. Os screenshots não foram recortados nem reutilizados como assets da interface. CodeCombat é uma referência de organização da campanha; nenhuma imagem ou música dele foi utilizada. Fonte e licença: https://github.com/google/fonts/tree/main/ofl/lilitaone.
+O visual atual do quiz segue `novas telas.pdf` e as imagens de referência fornecidas pelo responsável. Os formulários, textos, controles, menus e dados de jogador são elementos HTML reais; as telas completas de referência não são usadas como interface. O cenário pixel art do menu foi preparado separadamente para receber esses controles. As antigas ilustrações e os cenários de mundos do quiz normal foram removidos; os ambientes narrativos continuam exclusivos da campanha O Pôr do Sol.
+
+As imagens e os desenhos fornecidos pelo responsável mantêm as condições de seus respectivos titulares. Fonte e licença da Lilita One: https://github.com/google/fonts/tree/main/ofl/lilitaone.
 
 Os elementos originais foram criados para este projeto na presente implementação. A escolha de uma licença geral para distribuição do repositório permanece com o autor do projeto.
 
