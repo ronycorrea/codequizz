@@ -70,6 +70,7 @@
 .quiz-main-menu .hex-0{left:17%;top:23%}.quiz-main-menu .hex-1{left:50%;top:17%}.quiz-main-menu .hex-2{left:83%;top:23%}.quiz-main-menu .hex-3{left:17%;top:76%}.quiz-main-menu .hex-4{left:50%;top:82%}.quiz-main-menu .hex-5{left:83%;top:76%}
 .quiz-main-menu .play-button{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;gap:14px;width:312px;height:72px;min-height:72px;background:linear-gradient(#ff6c4c,#ff452a);color:white;border:2px solid #ff8163;border-radius:36px;box-shadow:0 7px 0 #b83420;text-shadow:none;font:650 25px 'Welcome Fredoka',sans-serif;letter-spacing:0;padding:12px}
 .quiz-main-menu .play-button>.icon{width:30px;height:30px}
+@media(max-width:700px){.quiz-main-menu .play-button:enabled:hover{transform:translateY(-2px)}.quiz-main-menu .play-button:enabled:active{transform:translateY(3px)}}
 .quiz-main-menu .play-button:active{transform:translate(-50%,calc(-50% + 3px))}
 .menu-resume{margin:16px 0 0 10px;padding:12px 16px;border-radius:16px;background:#fff9f0e8;border:1px solid #e8c36f;display:flex;align-items:center;gap:14px;color:#442062}
 .menu-resume>div{display:flex;flex-direction:column;gap:4px;min-width:0}.menu-resume strong{font-size:14px}.menu-resume span{font-size:12px}.menu-resume .btn{font-size:14px;min-height:44px;margin-left:auto;white-space:nowrap}
