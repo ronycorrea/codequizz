@@ -1,0 +1,59 @@
+name: Supabase keep-alive
+
+on:
+  schedule:
+    # Diariamente às 12:00 UTC (09:00 em Brasília).
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Consultar o banco do Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || vars.SUPABASE_URL }}
+          # Aceita a chave anon legada ou a publishable atual, ambas públicas.
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY || secrets.SUPABASE_PUBLISHABLE_KEY || vars.SUPABASE_PUBLISHABLE_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          node <<'NODE'
+          const url = process.env.SUPABASE_URL;
+          const key = process.env.SUPABASE_ANON_KEY || '';
+          if (!url || !key) {
+            console.error('Configure SUPABASE_URL e SUPABASE_ANON_KEY nos secrets do repositório.');
+            process.exit(1);
+          }
+          try {
+            if (new URL(url).protocol !== 'https:') throw new Error();
+            const publicKey = key.startsWith('sb_publishable_');
+            const legacyAnon = key.split('.').length === 3 && JSON.parse(Buffer.from(key.split('.')[1], 'base64url').toString()).role === 'anon';
+            if (!publicKey && !legacyAnon) throw new Error();
+          } catch {
+            console.error('Use uma URL HTTPS e somente a chave pública anon ou publishable. Não use service_role ou secret.');
+            process.exit(1);
+          }
+          NODE
+
+          # A consulta precisa da tabela de infraestrutura public.ping.
+          # Chaves publishable não são JWTs: envie-as somente no header apikey.
+          http_status="$(curl --fail --silent --show-error \
+            --retry 3 --retry-delay 10 --retry-max-time 150 \
+            --connect-timeout 10 --max-time 30 \
+            --output /dev/null \
+            --write-out '%{http_code}' \
+            "${SUPABASE_URL%/}/rest/v1/ping?select=id&limit=1" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Accept: application/json")"
+
+          if [ "$http_status" != "200" ]; then
+            echo "A consulta retornou HTTP $http_status; o ping não foi confirmado."
+            exit 1
+          fi
+
+          echo "Consulta concluída em $(date -u +%Y-%m-%dT%H:%M:%SZ)"
