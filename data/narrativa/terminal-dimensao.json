@@ -1,0 +1,16 @@
+{
+  "id": "dimensao",
+  "version": 1,
+  "prompt": "dimensao/ancora>",
+  "initialOutput": ["ESTAÇÃO DIMENSÃO · console local de sincronização", "Use ajuda para consultar os parâmetros e preparar uma janela com referência completa."],
+  "unknownOutput": ["Comando não encontrado. Use ajuda."],
+  "unavailableOutput": ["Falta referência de chegada — operação negada.", "2026: REFERÊNCIA COMPLETA / OUTRAS DATAS: SINCRONIZAÇÃO INDISPONÍVEL.", "A tentativa não altera a calibração existente. Consulte listar janelas."],
+  "commands": [
+    {"input": "ajuda", "action": "help", "output": ["Comandos disponíveis:"]},
+    {"input": "diagnostico", "action": "diagnostic", "output": ["ÂNCORA DE RETORNO: aguardando calibração.", "CAMPO: energia mínima 80; variação máxima 3.", "A sincronização depende de dados coletados no destino.", "Consulte listar janelas antes de calibrar."]},
+    {"input": "listar janelas", "action": "list", "output": ["2026: REFERÊNCIA COMPLETA / OUTRAS DATAS: SINCRONIZAÇÃO INDISPONÍVEL.", "Apenas a janela de 2026 possui uma referência de chegada testável."]},
+    {"input": "calibrar 2026", "action": "calibrate", "output": ["JANELA ATIVA: 2026.", "Parâmetros locais calibrados. Use verificar ancora para conferir o retorno."], "missingOutput": ["Consulte diagnostico e listar janelas antes de calibrar a referência."]},
+    {"input": "verificar ancora", "action": "verify", "output": ["REFERÊNCIA 2026: OK", "ÂNCORA DE RETORNO: VERIFICADA.", "Fixe a referência no console para continuar."], "missingOutput": ["A âncora ainda não tem uma janela ativa. Consulte os parâmetros e calibre 2026 primeiro."]},
+    {"input": "limpar", "action": "clear", "output": []}
+  ]
+}

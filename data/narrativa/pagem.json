@@ -1,0 +1,125 @@
+{
+  "id": "pagem",
+  "version": 1,
+  "title": "O Pôr do Sol",
+  "chapter": "PAGEM",
+  "chapterNumber": 3,
+  "location": "Repositório histórico PAGEM · 2149",
+  "introduction": "Depois de Alamut, o grupo procura os documentos primários por trás dos arquivos recuperados. A fotografia de Nilo acompanha a investigação.",
+  "completionText": "FASE 3 CONCLUÍDA — PRÓXIMO DESTINO: DIMENSÃO",
+  "scenes": {
+    "opening": [
+      {"speaker": "San", "text": "A foto ficou com ele por tantos anos."},
+      {"speaker": "Buster", "text": "Disse que não queria esquecer que aquilo existiu."},
+      {"speaker": "San", "text": "Nem sabemos onde foi tirada."},
+      {"speaker": "Buster", "text": "Ainda podemos descobrir."}
+    ],
+    "reunion": [
+      {"speaker": "San", "text": "Você está ferida?"},
+      {"speaker": "Yuna", "text": "Nada que me impeça de trabalhar."},
+      {"speaker": "San", "text": "O que fizeram com você?"},
+      {"speaker": "Yuna", "text": "Perguntaram sobre nós. Foi uma noite longa."},
+      {"speaker": "San", "text": "Não precisa explicar tudo agora."},
+      {"speaker": "Yuna", "text": "Talvez depois."}
+    ],
+    "diagnostic": [
+      {"speaker": "San", "text": "Os três relatórios repetem até os mesmos números."},
+      {"speaker": "Yuna", "text": "Pode ser um modelo usado por quem os arquivou."},
+      {"speaker": "San", "text": "Pode. Quero ver os originais antes de concluir qualquer coisa."}
+    ],
+    "anomaly": [
+      {"speaker": "San", "text": "Não estão faltando só algumas páginas."},
+      {"speaker": "Buster", "text": "Quanto material foi substituído?"},
+      {"speaker": "San", "text": "O suficiente para não confiarmos apenas nos resumos."},
+      {"speaker": "Yuna", "text": "Alguém pode ter restaurado o acervo depois de uma falha."},
+      {"speaker": "San", "text": "Talvez. Mas quem fez a restauração escolheu o que preservar."}
+    ],
+    "closing": [
+      {"speaker": "San", "text": "O acervo menciona uma instalação chamada Dimensão."},
+      {"speaker": "Yuna", "text": "O título fala de sincronização temporal."},
+      {"speaker": "Buster", "text": "Há uma rota de carga antiga até aquela região."},
+      {"speaker": "San", "text": "Você conhece outra rota que não aparece no mapa?"},
+      {"speaker": "Buster", "text": "Quando transportava baterias, ninguém nos mostrava os mapas públicos."},
+      {"speaker": "San", "text": "Em Alamut também conhecia os acessos."},
+      {"speaker": "Buster", "text": "Conhecia os antigos. Não as patrulhas que nos encontraram."}
+    ]
+  },
+  "missions": [
+    {
+      "id": "P01",
+      "type": "terminal",
+      "subject": "Terminal · comparação e investigação de fontes",
+      "learningObjectives": ["Comparar registros antes de interpretar um acervo.", "Distinguir uma transcrição de seu documento primário."],
+      "title": "Conferir a origem dos documentos",
+      "objective": "Abra o lote, compare as versões e verifique se existe uma fonte primária.",
+      "filename": "terminal",
+      "starter": "",
+      "hints": ["Identifique o lote disponível e observe que tipos de documentos ele contém.", "Há informações repetidas em registros de lugares e datas diferentes. Como o terminal permite compará-las?", "Uma comparação não explica de onde os dados vieram. Procure uma verificação sobre a fonte original."],
+      "actionLabel": "Abrir consulta histórica",
+      "effect": "FONTES A CONFERIR — os relatórios repetem números, mas os documentos primários não foram localizados. A página de consulta está disponível.",
+      "reviews": [
+        {"id": "P01-comparacao", "question": "Relatórios de países e datas diferentes repetem os mesmos números. Qual é o próximo passo responsável?", "choices": ["Concluir imediatamente que todos são falsos.", "Comparar os registros e procurar suas fontes primárias.", "Escolher um relatório ao acaso e ignorar os outros."], "correctIndex": 1, "explanation": "A repetição é uma pista que precisa ser investigada. Comparar versões e verificar a origem ajuda a avaliar o acervo sem antecipar uma conclusão.", "source": "Documento de design da campanha, p. 11 — P01."},
+        {"id": "P01-transcricao", "question": "O terminal mostra TIPO=TRANSCRICAO e ORIGINAL NÃO LOCALIZADO. O que essa informação permite afirmar?", "choices": ["O registro disponível é uma transcrição cuja fonte original ainda não foi localizada.", "Toda a história oficial já foi comprovada como falsa.", "O terminal executou uma busca no computador real."], "correctIndex": 0, "explanation": "Uma transcrição pode precisar de verificação adicional. A ausência do original é uma limitação do registro, não uma prova automática sobre todos os acontecimentos.", "source": "Documento de design da campanha, p. 11 — P01."}
+      ]
+    },
+    {
+      "id": "P02",
+      "type": "html",
+      "subject": "HTML · busca, formulários e rótulos",
+      "learningObjectives": ["Construir um formulário de consulta com campos identificados.", "Associar label aos controles e exigir o número do registro."],
+      "title": "Restaurar a busca do acervo",
+      "objective": "Reconstrua o formulário de busca por arquivos primários.",
+      "filename": "busca.html",
+      "starter": "<main>\n  <h1>Arquivo PAGEM</h1>\n  <form id=\"busca\">\n    <!-- Campo obrigatório para o registro -->\n    <!-- Seletor da coleção, incluindo originais -->\n    <!-- Botão de pesquisa -->\n  </form>\n</main>",
+      "hints": ["A busca precisa receber uma identificação do registro e a coleção onde ele será procurado.", "Pense em como diferenciar um campo de texto de uma escolha entre opções, sem deixar os rótulos desconectados dos controles.", "Teste o formulário vazio e depois preenchido. O campo obrigatório, a coleção pedida e o botão de envio estão funcionando?"],
+      "actionLabel": "Consultar acervo",
+      "effect": "BUSCA RESTAURADA — a consulta funciona. AVISOS DE INTEGRIDADE INDISPONÍVEIS — ESTILO NÃO CARREGADO.",
+      "reviews": [
+        {"id": "P02-required", "question": "Qual atributo impede uma consulta com o campo de registro vazio, usando a validação nativa do formulário?", "choices": ["placeholder", "required", "class"], "correctIndex": 1, "explanation": "required torna o preenchimento obrigatório. placeholder é uma orientação visual e não substitui a validação nem o rótulo.", "source": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/required"},
+        {"id": "P02-label", "question": "Um input possui id=\"registro\". Como ligar o rótulo explicitamente a esse controle?", "choices": ["Usar <label for=\"registro\">Registro</label>.", "Dar ao label qualquer for que não exista.", "Escrever o texto só no atributo class do formulário."], "correctIndex": 0, "explanation": "O valor de for precisa corresponder ao id do controle. Essa associação identifica o campo e permite acioná-lo pelo rótulo.", "source": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label"}
+      ]
+    },
+    {
+      "id": "P03",
+      "type": "css",
+      "subject": "CSS · visibilidade, contraste e diagnóstico",
+      "learningObjectives": ["Identificar como display:none oculta conteúdo.", "Tornar alertas perceptíveis com texto e fundo legíveis."],
+      "title": "Tornar os avisos visíveis",
+      "objective": "Exiba os avisos e destaque os campos sem fonte original.",
+      "filename": "integridade.css",
+      "starter": ".alerta {\n  display: none;\n  /* Faça os avisos aparecerem e ficarem legíveis */\n}",
+      "fixedHTML": "<main><h1>Integridade do acervo PAGEM</h1><section class=\"alerta\"><h2>Avisos de integridade</h2><p>ORIGINAL NÃO LOCALIZADO</p><p>VERSÃO RECONSTITUÍDA</p><p>ASSINATURA AUSENTE</p></section><p>Confira a origem dos registros antes de tirar conclusões.</p></main>",
+      "hints": ["O aviso já está no HTML. Observe qual regra impede que ele seja exibido.", "Depois de torná-lo visível, confira se os três avisos ocupam uma área legível na prévia.", "Compare o texto com o fundo. Ele continua fácil de ler sem depender apenas de uma borda ou de uma cor de destaque?"],
+      "actionLabel": "Exibir avisos no acervo",
+      "effect": "AVISOS VISÍVEIS — ORIGINAL NÃO LOCALIZADO; VERSÃO RECONSTITUÍDA; ASSINATURA AUSENTE. Agora o grupo consegue examinar a integridade dos registros.",
+      "reviews": [
+        {"id": "P03-display", "question": "Por que o aviso não aparece quando .alerta usa display:none?", "choices": ["A cor do texto muda automaticamente para azul.", "O conteúdo deixa de existir no arquivo HTML.", "O elemento é removido da exibição e não ocupa espaço no layout."], "correctIndex": 2, "explanation": "display:none oculta o elemento e seus descendentes no layout. O HTML continua no documento; uma regra de exibição apropriada pode torná-lo visível.", "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/display"},
+        {"id": "P03-contraste", "question": "O aviso aparece, mas o texto tem quase a mesma cor do fundo. O que melhora sua leitura?", "choices": ["Aumentar a diferença de luminosidade entre texto e fundo.", "Trocar apenas o nome da classe, sem alterar o estilo.", "Definir opacity:0 para o texto."], "correctIndex": 0, "explanation": "O contraste entre texto e fundo ajuda a perceber o conteúdo. Uma borda ou um nome de classe não torna, por si só, um texto de baixo contraste legível.", "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Perceivable/Color_contrast"}
+      ]
+    },
+    {
+      "id": "P04",
+      "type": "python",
+      "subject": "Python · filtros com and, not e dicionários",
+      "learningObjectives": ["Combinar o tipo do registro com a ausência de fonte primária.", "Retornar IDs na ordem original, incluindo uma lista vazia quando necessário."],
+      "title": "Cruzar registros inconsistentes",
+      "objective": "Retorne IDs de transcrições que não possuem fonte primária.",
+      "filename": "integridade.py",
+      "functionName": "registros_suspeitos",
+      "starter": "def registros_suspeitos(registros):\n    encontrados = []\n    # Analise tipo e fonte_primaria\n    return encontrados",
+      "hints": ["Separe a investigação em duas perguntas: qual é o tipo do registro e existe uma fonte primária?", "Um registro precisa atender às duas condições. Examine um exemplo que atende a só uma delas para conferir sua lógica.", "Devolva a identificação dos registros selecionados, preservando a ordem e as repetições. O que sua função devolve sem correspondências?"],
+      "actionLabel": "Cruzar arquivos",
+      "effect": "REGISTROS CRUZADOS — os arquivos sem origem verificável incluem referências ao Laboratório 22 e à pesquisa DIMENSÃO. JANELA REFERENCIAL: 2026.",
+      "publicTests": [
+        {"args": [[{"id": "R03", "tipo": "transcricao", "fonte_primaria": null}, {"id": "R02", "tipo": "original", "fonte_primaria": null}, {"id": "R04", "tipo": "transcricao", "fonte_primaria": "ACERVO-12"}, {"id": "R01", "tipo": "transcricao", "fonte_primaria": ""}]], "expected": ["R03", "R01"], "label": "Selecionar transcrições sem fonte e preservar a ordem"},
+        {"args": [[{"id": "R02", "tipo": "original", "fonte_primaria": null}, {"id": "R04", "tipo": "transcricao", "fonte_primaria": "ACERVO-12"}]], "expected": [], "label": "Originais e transcrições com fonte ficam de fora"},
+        {"args": [[]], "expected": [], "label": "Lista vazia"},
+        {"args": [[{"id": "R09", "tipo": "transcricao", "fonte_primaria": false}, {"id": "R08", "tipo": "transcricao", "fonte_primaria": true}, {"id": "R09", "tipo": "transcricao", "fonte_primaria": null}]], "expected": ["R09", "R09"], "label": "Preservar IDs repetidos e considerar o valor da fonte"}
+      ],
+      "reviews": [
+        {"id": "P04-duas-condicoes", "question": "Um registro deve ser selecionado somente quando é transcrição e não tem fonte primária. Qual expressão corresponde à regra?", "choices": ["r[\"tipo\"] == \"transcricao\" or not r[\"fonte_primaria\"]", "r[\"tipo\"] == \"transcricao\" and not r[\"fonte_primaria\"]", "r[\"tipo\"] != \"transcricao\" and r[\"fonte_primaria\"]"], "correctIndex": 1, "explanation": "and exige simultaneamente as duas condições. not testa a ausência de fonte. Com or, registros que atendem a apenas uma condição também entrariam.", "source": "https://docs.python.org/3/reference/expressions.html#boolean-operations"},
+        {"id": "P04-sem-resultados", "question": "Se nenhum registro atender ao filtro, qual retorno mantém o contrato da função?", "choices": ["None", "False", "Uma lista vazia: []."], "correctIndex": 2, "explanation": "A função devolve uma lista de IDs. Quando não há correspondências, a mesma estrutura de resultado é preservada com uma lista vazia.", "source": "https://docs.python.org/3/tutorial/datastructures.html#more-on-lists"}
+      ]
+    }
+  ]
+}

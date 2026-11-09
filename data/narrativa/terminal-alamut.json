@@ -1,0 +1,15 @@
+{
+  "id": "forte-alamut",
+  "version": 1,
+  "prompt": "alamut/local>",
+  "initialOutput": ["Forte Alamut · cópia local do terminal de manutenção", "Use ajuda para consultar os comandos. Nenhuma conexão externa será aberta."],
+  "unknownOutput": ["Comando não encontrado. Use ajuda."],
+  "commands": [
+    {"input": "ajuda", "action": "help", "output": ["Comandos disponíveis:"]},
+    {"input": "mapa", "action": "print", "output": ["MAPA LOCAL / FORTE ALAMUT", "NORTE: entrada principal bloqueada.", "LESTE: antiga área de carga; dados incompletos.", "Buster reconhece uma passagem de manutenção nesse setor."]},
+    {"input": "examinar leste", "action": "discover", "output": ["SETOR LESTE / ROTA DE CARGA", "Uma escada lateral passa atrás da estrutura de concreto.", "CÓDIGO DO ACESSO: MANUTENCAO_LESTE", "Use marcar manutencao para escolher essa rota."]},
+    {"input": "listar acessos", "action": "list", "output": ["PRINCIPAL — bloqueado.", "TORRE — sem passagem de carga."], "discoveredOutput": ["MANUTENCAO_LESTE — escada lateral identificada."]},
+    {"input": "marcar manutencao", "action": "mark", "output": ["ROTA MARCADA: MANUTENCAO_LESTE", "O grupo pode abrir o acesso lateral."], "missingOutput": ["A rota de manutenção ainda não foi identificada. Examine o setor leste."]},
+    {"input": "limpar", "action": "clear", "output": []}
+  ]
+}

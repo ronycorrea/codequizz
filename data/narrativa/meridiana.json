@@ -1,0 +1,83 @@
+{
+  "id": "por-do-sol",
+  "version": 1,
+  "title": "O Pôr do Sol",
+  "chapter": "Meridiana",
+  "chapterNumber": 1,
+  "location": "Refúgio subterrâneo da Última Aurora · Meridiana, 2149",
+  "introduction": "A metade norte da base perdeu energia. San e seus amigos precisam restaurar o abrigo antes de receber informações externas.",
+  "completionText": "FASE 1 CONCLUÍDA — PRÓXIMO DESTINO: FORTE ALAMUT",
+  "scenes": {
+    "opening": [
+      { "speaker": "Yuna", "text": "Você ainda está acordado?" },
+      { "speaker": "San", "text": "A metade norte perdeu energia outra vez." },
+      { "speaker": "Yuna", "text": "O terminal de serviço tem os registros. Talvez ajude." },
+      { "speaker": "Buster", "text": "Trouxe duas células novas. Ou quase novas." },
+      { "speaker": "San", "text": "“Quase” não é uma medida muito animadora." },
+      { "speaker": "Buster", "text": "É a medida que conseguimos pagar." }
+    ],
+    "diagnostic": [
+      { "speaker": "San", "text": "Não é falta de bateria. O painel de distribuição foi apagado." },
+      { "speaker": "Yuna", "text": "Então reconstruímos a interface. Abra o editor." }
+    ],
+    "closing": [
+      { "speaker": "Nilo", "text": "Bom. Conseguiram colocar a base de pé." },
+      { "speaker": "San", "text": "Ela aguenta mais uma noite." },
+      { "speaker": "Nilo", "text": "Encontrei movimentação de arquivos antigos em uma fortaleza." },
+      { "speaker": "Yuna", "text": "Arquivos de que tipo?" },
+      { "speaker": "Nilo", "text": "Os que a Ordem não costuma deixar ninguém ler." },
+      { "speaker": "Buster", "text": "Qual fortaleza?" },
+      { "speaker": "Nilo", "text": "Forte Alamut." }
+    ]
+  },
+  "missions": [
+    {
+      "id": "M01",
+      "type": "terminal",
+      "title": "Diagnóstico do abrigo",
+      "objective": "Verifique o terminal da base e leia o aviso do setor de energia.",
+      "filename": "terminal",
+      "starter": "",
+      "hints": ["O terminal tem um catálogo de comandos. Consulte-o se não souber por onde começar.", "Antes de tentar restaurar a rede, procure uma informação que explique o desligamento.", "Observe os arquivos do setor de energia. Qual deles parece registrar o motivo da falha?"],
+      "actionLabel": "Abrir editor",
+      "actionVisual": "diagnostico_identificado",
+      "effect": "O aviso identifica o arquivo painel.html danificado. A interface precisa ser reconstruída."
+    },
+    {
+      "id": "M02",
+      "type": "html",
+      "title": "Reconstruir o painel da base",
+      "objective": "Crie um título e uma área de status para o painel de Meridiana.",
+      "filename": "painel.html",
+      "starter": "<main>\n  <!-- Escreva o título do painel -->\n  <!-- Crie uma área de status com id=\"status\" -->\n</main>",
+      "hints": ["Separe o título da página da região que informa o estado da rede.", "Pense em qual elemento representa um título principal e qual reúne uma seção de conteúdo.", "Compare o identificador pedido no objetivo com o da sua região de status. Ela tem texto visível?"],
+      "actionLabel": "Publicar painel",
+      "actionVisual": "publicar_painel",
+      "effect": "INTERFACE DISPONÍVEL — o painel da base reconhece seu estado."
+    },
+    {
+      "id": "M03",
+      "type": "css",
+      "title": "Coloque os três módulos lado a lado",
+      "objective": "Distribua os três módulos em uma linha, com espaço entre eles.",
+      "filename": "baterias.css",
+      "starter": ".baterias {\n  /* Alinhe os três módulos */\n  display: ____;\n  flex-direction: ____;\n  gap: 12px;\n}",
+      "hints": ["Observe a disposição atual: o que faz os módulos ficarem um abaixo do outro?", "Escolha um recurso de layout que distribua elementos no contêiner. Flexbox e Grid são possibilidades.", "Confira a largura disponível, a separação entre os módulos e se todos continuam na mesma linha."],
+      "actionLabel": "Conectar células",
+      "actionVisual": "organizar_celulas",
+      "effect": "SETOR A / SETOR B / SETOR C — Buster instala os cabos das três células."
+    },
+    {
+      "id": "M04",
+      "type": "python",
+      "title": "Ativar a energia de reserva",
+      "objective": "Permita a ativação quando a carga disponível cobrir o mínimo exigido.",
+      "filename": "energia.py",
+      "starter": "def pode_ativar(disponivel, minimo):\n    # Devolva True ou False\n    pass",
+      "hints": ["A decisão depende de comparar a carga disponível com a carga mínima.", "O que deve acontecer quando os dois valores são iguais? Teste esse limite antes de escolher a comparação.", "Confira se a função devolve um resultado verdadeiro ou falso, em vez de apenas mostrar uma mensagem."],
+      "actionLabel": "Ativar reserva",
+      "actionVisual": "ligar_setor_norte",
+      "effect": "REDE NORTE: ATIVA — San pressiona o interruptor. A sala se ilumina e o rádio volta a funcionar."
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "id": "dimensao",
+  "version": 1,
+  "title": "O Pôr do Sol",
+  "chapter": "Dimensão",
+  "chapterNumber": 4,
+  "location": "Estação de pesquisa temporal sob uma usina desativada · 2149",
+  "introduction": "Cora encontrou uma estação com âncora de retorno. Os únicos dados completos de sincronização apontam para uma janela de 2026.",
+  "completionText": "2026 — LABORATÓRIO 22",
+  "scenes": {
+    "opening": [
+      {"speaker": "Cora", "text": "Encontramos a estação. Fazer o sistema funcionar é outra história."},
+      {"speaker": "San", "text": "A janela de 2026 ainda existe?"},
+      {"speaker": "Cora", "text": "Os dados existem. A máquina, por enquanto, discorda."},
+      {"speaker": "Buster", "text": "Posso trazer mais energia."},
+      {"speaker": "Cora", "text": "Finalmente alguém falando uma língua que ela entende."}
+    ],
+    "farewell": [
+      {"speaker": "San", "text": "Desconfiei de você depois de Alamut."},
+      {"speaker": "Buster", "text": "Eu sei."},
+      {"speaker": "San", "text": "Não foi justo."},
+      {"speaker": "Buster", "text": "Não. Mas ainda estarei aqui quando a âncora tentar trazê-lo de volta."}
+    ],
+    "delivery": [
+      {"speaker": "San", "text": "A passagem abriu."},
+      {"speaker": "Yuna", "text": "San... preciso te contar uma coisa."},
+      {"speaker": "San", "text": "O que foi?"},
+      {"speaker": "Yuna", "text": "Não é nada. Boa sorte."},
+      {"speaker": "San", "text": "Depois você me conta."}
+    ],
+    "crossing": [
+      {"speaker": "Registro", "text": "San guarda o estojo com o arquivo de contingência médica e segura a fotografia do céu de Nilo."},
+      {"speaker": "Registro", "text": "O aro permanece estável. San atravessa a luz; do outro lado, folhas se movem contra o céu."},
+      {"speaker": "Registro", "text": "2026 — Laboratório 22"}
+    ]
+  },
+  "missions": [
+    {
+      "id": "D01",
+      "type": "terminal",
+      "subject": "Terminal · parâmetros e referências de sincronização",
+      "learningObjectives": ["Consultar o diagnóstico e identificar os dados disponíveis.", "Calibrar somente uma janela com referência de chegada e verificar a âncora."],
+      "title": "Calibrar a âncora temporal",
+      "objective": "Confira os parâmetros, calibre a janela de 2026 e verifique a âncora de retorno.",
+      "filename": "terminal",
+      "starter": "",
+      "hints": ["Antes de ajustar a estação, procure os parâmetros que explicam o estado da máquina.", "A escolha da janela depende de uma referência de chegada completa. Confira quais dados estão disponíveis.", "Ajustar um parâmetro e verificar seu resultado são passos diferentes. Como conferir se a âncora reconheceu a referência?"],
+      "actionLabel": "Fixar referência 2026",
+      "effect": "REFERÊNCIA 2026: OK — o aro central acende. Outras datas continuam sem sincronização disponível.",
+      "reviews": [
+        {"id": "D01-referencia", "question": "Por que a estação permite calibrar 2026?", "choices": ["É a única janela com dados completos de sincronização.", "Qualquer data funciona depois de repetir o comando.", "A data mais distante sempre é mais estável."], "correctIndex": 0, "explanation": "A âncora depende de uma referência de chegada testável. Nesta estação, apenas 2026 possui os dados completos; escolher outra data não cria esses dados.", "source": "Documento de design da campanha, p. 14 — D01 e regra da viagem."},
+        {"id": "D01-verificacao", "question": "Depois de calibrar a janela, qual ação confirma o estado da âncora?", "choices": ["Ignorar o diagnóstico e executar a partida.", "Usar verificar ancora antes de fixar a referência.", "Apagar a lista de janelas."], "correctIndex": 1, "explanation": "Calibrar modifica um parâmetro; verificar permite conferir o resultado. O terminal simula essa sequência sem executar comandos no computador real.", "source": "Documento de design da campanha, p. 14 — D01."}
+      ]
+    },
+    {
+      "id": "D02",
+      "type": "python",
+      "subject": "Python · and e limites inclusivos",
+      "learningObjectives": ["Exigir simultaneamente energia suficiente e variação aceitável.", "Incluir energia igual a 80 e variação igual a 3 nos casos permitidos."],
+      "title": "Testar a estabilidade do campo",
+      "objective": "Permita energizar o campo com energia de pelo menos 80 e variação de no máximo 3.",
+      "filename": "campo.py",
+      "functionName": "campo_estavel",
+      "starter": "def campo_estavel(energia, variacao):\n    # Energia mínima: 80; variação máxima: 3\n    pass",
+      "hints": ["Energia e variação têm limites de sentidos diferentes: uma precisa ser suficiente; a outra não pode ser excessiva.", "O campo pode ser considerado estável quando só uma das verificações passa? Pense na combinação necessária.", "Teste separadamente os valores exatamente nos limites e os valores logo fora deles. Sua comparação inclui os limites permitidos?"],
+      "actionLabel": "Energizar campo de teste",
+      "effect": "CAMPO ESTÁVEL — os medidores deixam a zona vermelha. Um pulso de teste confirma a estabilidade sem transportar ninguém.",
+      "publicTests": [
+        {"args": [80, 3], "expected": true, "label": "Energia e variação exatamente nos limites"},
+        {"args": [79, 3], "expected": false, "label": "Energia abaixo do mínimo"},
+        {"args": [100, 4], "expected": false, "label": "Variação acima do máximo"},
+        {"args": [90, 1], "expected": true, "label": "Reserva suficiente e campo estável"}
+      ],
+      "reviews": [
+        {"id": "D02-and", "question": "Energia e variação precisam estar corretas ao mesmo tempo. Qual expressão representa essa regra?", "choices": ["energia >= 80 or variacao <= 3", "energia >= 80 and variacao <= 3", "energia < 80 and variacao > 3"], "correctIndex": 1, "explanation": "and exige que ambas as comparações sejam verdadeiras. Com or, uma energia suficiente poderia autorizar uma variação perigosa no simulador.", "source": "https://docs.python.org/3/reference/expressions.html#boolean-operations"},
+        {"id": "D02-limites", "question": "Qual resultado campo_estavel(80, 3) deve devolver?", "choices": ["False, porque os limites não são aceitos.", "80, porque essa é a energia disponível.", "True, porque mínimo e máximo são inclusivos."], "correctIndex": 2, "explanation": "Pelo menos 80 corresponde a >= 80; no máximo 3 corresponde a <= 3. Os valores exatamente nos limites são válidos, e a função retorna um booleano.", "source": "https://docs.python.org/3/reference/expressions.html#comparisons"}
+      ]
+    },
+    {
+      "id": "D03",
+      "type": "html",
+      "subject": "HTML e CSS · estrutura semântica e layout responsivo",
+      "learningObjectives": ["Identificar uma região semântica com section#painel.", "Organizar três cartões visíveis em uma linha com Flexbox ou Grid, sem sobreposição."],
+      "title": "Montar o painel de sincronização",
+      "objective": "Organize Âncora, Campo e Retorno em section#painel, numa linha que caiba na tela.",
+      "filename": "painel.html",
+      "filenames": {"html": "painel.html", "css": "painel.css"},
+      "starter": "<div>\n  <div class=\"etapa\">Âncora</div>\n  <div class=\"etapa\">Campo</div>\n  <div class=\"etapa\">Retorno</div>\n</div>",
+      "starters": {
+        "html": "<div>\n  <div class=\"etapa\">Âncora</div>\n  <div class=\"etapa\">Campo</div>\n  <div class=\"etapa\">Retorno</div>\n</div>",
+        "css": "#painel {\n  /* Organize os três cartões em uma linha */\n}\n\n.etapa {\n  /* Distribua o espaço disponível */\n}"
+      },
+      "hints": ["Compare a estrutura inicial com a região semântica e a identificação pedidas no objetivo.", "O layout do grupo controla a disposição dos cartões. Flexbox e Grid permitem distribuir esse espaço.", "Confira os dois arquivos e teste uma tela estreita. Os três rótulos permanecem legíveis, na mesma linha e sem um cartão cobrir outro?"],
+      "actionLabel": "Conectar painel de sincronização",
+      "effect": "PAINEL SINCRONIZADO — o console espelha a disposição dos cartões Âncora, Campo e Retorno. Cada indicador acompanha o estado da máquina.",
+      "reviews": [
+        {"id": "D03-section", "question": "Qual estrutura atende ao pedido de uma região semântica identificada como painel?", "choices": ["<div class=\"qualquer\">", "<section id=\"painel\">", "<span id=\"outro\">"], "correctIndex": 1, "explanation": "section representa uma seção do documento; id=\"painel\" identifica essa região. Os cartões .etapa ficam dentro dela para que a regra de layout organize o grupo.", "source": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/section"},
+        {"id": "D03-layout", "question": "Como colocar os três cartões numa linha com espaçamento, sem depender de coordenadas fixas?", "choices": ["Usar Flexbox ou Grid no painel e distribuir o espaço entre os cartões.", "Posicionar os três cartões exatamente no mesmo ponto.", "Esconder dois cartões para caber apenas um."], "correctIndex": 0, "explanation": "Flexbox e Grid distribuem elementos no espaço disponível. gap cria separação; o resultado ainda precisa manter os três cartões visíveis, sem sobreposição e dentro da tela.", "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox"}
+      ]
+    },
+    {
+      "id": "D04",
+      "type": "python",
+      "subject": "Python · listas e ordem de operações",
+      "learningObjectives": ["Representar uma sequência ordenada com uma lista.", "Garantir que âncora, campo e retorno sejam preparados nessa ordem antes da viagem."],
+      "title": "Programar a sequência de partida",
+      "objective": "Retorne as três etapas na ordem: ancora, campo, retorno.",
+      "filename": "partida.py",
+      "functionName": "ordem_de_partida",
+      "starter": "def ordem_de_partida():\n    # Retorne as três etapas na ordem correta\n    return []",
+      "hints": ["O resultado precisa representar uma sequência, e não apenas reunir nomes de etapas.", "Consulte o objetivo e pense nas dependências: qual sistema precisa estar pronto antes de o seguinte funcionar?", "Compare a posição de cada item com a sequência solicitada. Sua função devolve a estrutura pedida ou um único texto?"],
+      "actionLabel": "Executar partida",
+      "effect": "SEQUÊNCIA DE PARTIDA CONFIRMADA — ÂNCORA FIXADA → CAMPO ESTÁVEL → RETORNO PREPARADO. A passagem está pronta para San.",
+      "publicTests": [
+        {"args": [], "expected": ["ancora", "campo", "retorno"], "label": "Fixar a âncora, estabilizar o campo e preparar o retorno"}
+      ],
+      "reviews": [
+        {"id": "D04-ordem", "question": "Por que ['campo', 'ancora', 'retorno'] não atende à sequência pedida?", "choices": ["Listas nunca podem conter texto.", "A quantidade de etapas está errada.", "A lista contém as etapas, mas o campo aparece antes de a âncora ser fixada."], "correctIndex": 2, "explanation": "Ter os mesmos elementos não garante a mesma sequência. Uma lista é ordenada; cada posição importa para representar a partida.", "source": "https://docs.python.org/3/tutorial/datastructures.html#more-on-lists"},
+        {"id": "D04-retorno", "question": "Qual retorno respeita o contrato de ordem_de_partida()?", "choices": ["['ancora', 'campo', 'retorno']", "'ancora, campo, retorno'", "{'ancora', 'campo', 'retorno'}"], "correctIndex": 0, "explanation": "O contrato pede uma lista de três textos em ordem exata. Uma string é um único texto; um conjunto não representa a ordem necessária.", "source": "https://docs.python.org/3/tutorial/datastructures.html#sets"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "./",
+  "name": "CodeQuizz — O Pôr do Sol",
+  "short_name": "O Pôr do Sol",
+  "description": "Cinco fases de aventura e programação entre Meridiana, 2149, e Laboratório 22, 2026.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0B1715",
+  "theme_color": "#0B1715",
+  "icons": [{"src":"../assets/icons/campaign.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]
+}

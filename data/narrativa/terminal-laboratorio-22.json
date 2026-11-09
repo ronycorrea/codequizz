@@ -1,0 +1,21 @@
+{
+  "id":"laboratorio-22", "version":1, "prompt":"laboratorio/local>",
+  "initialOutput":["LABORATÓRIO 22 · terminal de triagem local", "A visita de San já foi registrada. Use ajuda para consultar o caminho autorizado."],
+  "unknownOutput":["Comando indisponível nesta etapa. Use ajuda para consultar o catálogo local."],
+  "commands":[
+    {"input":"ajuda","mission":"all","action":"help","output":["Comandos desta etapa:"]},
+    {"input":"limpar","mission":"all","action":"clear","output":[]},
+    {"input":"consultar visitante san","mission":"L01","action":"visitor","output":["VISITA AUTORIZADA / SAN", "Destino: INTEGRACAO. Registro previamente confirmado pela recepção."]},
+    {"input":"listar setores","mission":"L01","action":"sectors","output":["RECEPCAO — triagem; INTEGRACAO — ala experimental; ACERVO — consulta local."]},
+    {"input":"ver rota integracao","mission":"L01","action":"route","output":["ROTA INTEGRACAO: catraca interna → corredor claro → sala de pesquisa."],"missingOutput":["Consulte a visita de San e liste os setores antes de conferir a rota."]},
+    {"input":"confirmar visita","mission":"L01","action":"confirm","output":["VISITA CONFIRMADA: SAN / INTEGRACAO. Abra a passagem quando estiver pronto."],"missingOutput":["Localize a visita autorizada e confira a rota de integração antes de confirmar."]},
+    {"input":"ler manifesto","mission":"L03","action":"manifest","output":["ARQUIVO DE CONTINGÊNCIA / ESTRUTURA DESCONHECIDA", "Origem declarada: pacote trazido por San. Conteúdo ainda não interpretado.","A leitura não executa o dispositivo nem confirma uma conexão."]},
+    {"input":"analisar cabecalho","mission":"L03","action":"header","output":["FORMATO NÃO RECONHECIDO PELO TERMINAL LOCAL.","O cabeçalho não corresponde ao formato usual dos registros médicos do laboratório."]},
+    {"input":"exibir arquivo","mission":"L03","action":"display","output":["EXIBIÇÃO PREPARADA / ARQUIVO DE CONTINGÊNCIA.","A apresentação a Helena exige uma confirmação separada. Você pode voltar à inspeção; não há ramificações de final."],"missingOutput":["Leia o manifesto antes de preparar a exibição do arquivo."]},
+    {"input":"listar estacoes","mission":"L04","action":"stations","output":["REDE ANTIGA / DESTINOS INDEPENDENTES", "estacao-9 — Estação Nove; abrigo-vale — Abrigo Vale.","São necessárias confirmações dos dois destinos."]},
+    {"input":"preparar pacote","mission":"L04","action":"prepare","output":["PACOTE LOCAL PREPARADO: gravação de Helena e registros originais de 2026.","Use verificar copia para conferir sua origem antes da transmissão."],"missingOutput":["Liste as estações antes de preparar o pacote para a rede antiga."]},
+    {"input":"verificar copia","mission":"L04","action":"verify","output":["ORIGEM LOCAL VERIFICADA: gravação e registros conferidos.","O pacote está pronto para transmissões simuladas a dois destinos distintos."],"missingOutput":["Prepare o pacote local antes de verificar sua origem."]},
+    {"input":"transmitir estacao-9","mission":"L04","action":"send","station":"estacao-9","output":["ESTAÇÃO NOVE: CÓPIA RECEBIDA E CONFIRMADA."],"missingOutput":["Prepare o pacote e verifique sua origem local antes de transmitir."]},
+    {"input":"transmitir abrigo-vale","mission":"L04","action":"send","station":"abrigo-vale","output":["ABRIGO VALE: CÓPIA RECEBIDA E CONFIRMADA."],"missingOutput":["Prepare o pacote e verifique sua origem local antes de transmitir."]}
+  ]
+}

@@ -1,0 +1,465 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": ".nojekyll",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1091,
+      "sha256": "3d38dfac13577de0ba0541c5ab8e16b1966c247486c403d6e5dd7abc4c16a894"
+    },
+    {
+      "path": "assets/AUTORIA.md",
+      "bytes": 7248,
+      "sha256": "5fb9375f52b934679422473055cdc1809b4eaf82681cd9bbdd670e2ab01ae927"
+    },
+    {
+      "path": "assets/campaign-licenses.txt",
+      "bytes": 65004,
+      "sha256": "0340aa7ed60f837dee02ce94ec6ab83c22924b8824da851dfb787b16c420b8ca"
+    },
+    {
+      "path": "assets/campaign/JetBrainsMono-OFL.txt",
+      "bytes": 4399,
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d"
+    },
+    {
+      "path": "assets/campaign/JetBrainsMono.ttf",
+      "bytes": 187208,
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+    },
+    {
+      "path": "assets/campaign/SpaceGrotesk-OFL.txt",
+      "bytes": 4495,
+      "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72"
+    },
+    {
+      "path": "assets/campaign/SpaceGrotesk.ttf",
+      "bytes": 136676,
+      "sha256": "acad6de1fc93436f5c0f1f4137751ef04f1aea3063e7036535970ffcfbd79f72"
+    },
+    {
+      "path": "assets/campaign/codequizz-emblem.png",
+      "bytes": 1789610,
+      "sha256": "7a04bd29143111ce79943db7437d0bdd6406b87f63c2bc9997ac9cc9b64219cb"
+    },
+    {
+      "path": "assets/campaign/dimensao-base.png",
+      "bytes": 2760222,
+      "sha256": "a13111c470b7fc9022360206d56235bcf5ffa6f6c923d3059d339fecfe69c798"
+    },
+    {
+      "path": "assets/campaign/energy-module-active.svg",
+      "bytes": 3884,
+      "sha256": "9b145d1729915907c4999d5bff2da681135e5b8db98355d7b787a5ad2b554fcb"
+    },
+    {
+      "path": "assets/campaign/energy-module-idle.svg",
+      "bytes": 3731,
+      "sha256": "6f1716bc7bae9118b470b4c2375cc21b9c0c20e5835a236b17d3994136698f72"
+    },
+    {
+      "path": "assets/campaign/forte-alamut-base.png",
+      "bytes": 3117437,
+      "sha256": "52305270f25dc344ee2faea71cfa73ff0d4cfc1bdf90086f210c670d41428403"
+    },
+    {
+      "path": "assets/campaign/laboratorio-22-base.png",
+      "bytes": 2684392,
+      "sha256": "826514969576c641ff4ed02b29ef2fe61b8757c9ba6fa8dee4f8fc0fd454ace3"
+    },
+    {
+      "path": "assets/campaign/meridiana-base.png",
+      "bytes": 184874,
+      "sha256": "4242af71c5dfb9d827cb3d61c9d3f3a0306c011da343fb42a440c9e8551ed7f7"
+    },
+    {
+      "path": "assets/campaign/pagem-base.png",
+      "bytes": 2639900,
+      "sha256": "e8db2328dceb01f21aedc47f277d865de3c88e9b86f1f7e23d01dabfa935cc9c"
+    },
+    {
+      "path": "assets/fonts/Fredoka-Variable.ttf",
+      "bytes": 159184,
+      "sha256": "2ba02e68b152868aef9ba28e24b3648c7d457fe6f25c761f2c2c53fb61a73fc8"
+    },
+    {
+      "path": "assets/fonts/Inter-Variable.ttf",
+      "bytes": 876576,
+      "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031"
+    },
+    {
+      "path": "assets/fonts/LilitaOne-Regular.ttf",
+      "bytes": 28092,
+      "sha256": "f5b641c45c69d772ee4eda687bc9fda411d5cad6b0b45371491da4580cbc8d59"
+    },
+    {
+      "path": "assets/fonts/OFL-Fredoka.txt",
+      "bytes": 4388,
+      "sha256": "5c9e7eee5c6b25f4b05b8d53b2e470ea4962f9ced742d044a98f7d95d1375bab"
+    },
+    {
+      "path": "assets/fonts/OFL-Inter.txt",
+      "bytes": 4377,
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+    },
+    {
+      "path": "assets/fonts/OFL-LilitaOne.txt",
+      "bytes": 4392,
+      "sha256": "255d5debbb80eb2ea762644311f266a279e8778f00156655a516e2b7781a63e1"
+    },
+    {
+      "path": "assets/icons/campaign.svg",
+      "bytes": 439,
+      "sha256": "ae3d6027c2fc00f2cfff1c5e4a899bef62fbd1ec481a404fe69d4dff3b0fb05a"
+    },
+    {
+      "path": "assets/icons/favicon.svg",
+      "bytes": 270,
+      "sha256": "ac4e298e8d839afa6e9ef902b7934d2d68beba62d1027eaf0d6bb33cac17dd40"
+    },
+    {
+      "path": "assets/quiz/ARTWORK.md",
+      "bytes": 2170,
+      "sha256": "9f2dca808a0a42270503345282aa919f9ec4f52d46b98001db3885ffba185d80"
+    },
+    {
+      "path": "assets/quiz/menu-background.png",
+      "bytes": 1807228,
+      "sha256": "3e721a8455a3cef40da2401ada513b3a728a9562281a3327c000b9e26e95579e"
+    },
+    {
+      "path": "assets/welcome-LICENSES.txt",
+      "bytes": 1204,
+      "sha256": "40fced0c93440e575339293442e395a55fe5c2be55d3e979ddd87999bf1059a5"
+    },
+    {
+      "path": "assets/welcome/1b3ca.svg",
+      "bytes": 383,
+      "sha256": "f317a410027d820a07c5e20dbe6fbf9a0d331b652066da8de386ea83dc5384f4"
+    },
+    {
+      "path": "assets/welcome/203b9.svg",
+      "bytes": 1435,
+      "sha256": "9442d3fac4671140038b5ccae78d42c62301f30b79c270490694bef31466df45"
+    },
+    {
+      "path": "assets/welcome/31a22.svg",
+      "bytes": 1721,
+      "sha256": "06c3b855aafcb04e14313ab3c4b9e1550c7077ec9bd2451f668365cd0208386a"
+    },
+    {
+      "path": "assets/welcome/32b74.svg",
+      "bytes": 1519,
+      "sha256": "cc220d43020f98490f0b315b18415326b9f0d1adfeb80f9ca771b1fcba65a250"
+    },
+    {
+      "path": "assets/welcome/42570.svg",
+      "bytes": 894,
+      "sha256": "f456fd4549b821d751443104ac5d46258d1ac0a04e4a8357f415767630deef91"
+    },
+    {
+      "path": "assets/welcome/4cfe2.svg",
+      "bytes": 1983,
+      "sha256": "5c2c5bd2d5552bcf11cf271066cea95da44e0cc78b46ef930ba06c386a365c33"
+    },
+    {
+      "path": "assets/welcome/6f288.svg",
+      "bytes": 855,
+      "sha256": "520e2aa294c8b60beb750298cf355916a397f9a47ca35cd4460e193477f135f3"
+    },
+    {
+      "path": "assets/welcome/79f70.svg",
+      "bytes": 1217,
+      "sha256": "83018552a1b4249a71d2f7613f0bfde23257894c4d11b5dabf0106879e6c34f6"
+    },
+    {
+      "path": "assets/welcome/7b413.svg",
+      "bytes": 328,
+      "sha256": "52b2be9879c8f301f12f9f26e335a17177d68497a729b592818a69d9201de7c0"
+    },
+    {
+      "path": "assets/welcome/9760c.svg",
+      "bytes": 517,
+      "sha256": "e56503596782bab9e7a10f07e5a4f1d9db730b1644f779ce6ad8a28397a9bf6b"
+    },
+    {
+      "path": "assets/welcome/ae5a2.svg",
+      "bytes": 396,
+      "sha256": "651a6199a3863f09639a92dcd7be80b7edfbd3579fbcad6fbdb10d6201d3c3bb"
+    },
+    {
+      "path": "assets/welcome/b6576.svg",
+      "bytes": 326,
+      "sha256": "44169f66bdb120cc6c5659f5af82ce172cbb06b17f659b8ed5bf22cd8198defa"
+    },
+    {
+      "path": "assets/welcome/b7b3e.svg",
+      "bytes": 1965,
+      "sha256": "e7c8798ec280facc5bcb0643540ea7a0a06bc61c5cec61350b4fb6e11d028a82"
+    },
+    {
+      "path": "assets/welcome/bc8c5.svg",
+      "bytes": 1631,
+      "sha256": "d9712581235c9c9d9b40da1389466a4a3388e712b9ceeddab02240f39dc77b4b"
+    },
+    {
+      "path": "assets/welcome/bubble-coral.svg",
+      "bytes": 171,
+      "sha256": "79634dd1ec182659a0c2c535a5b9b7c6dfeabed236eb1937adc2b7f2c11316a7"
+    },
+    {
+      "path": "assets/welcome/bubble-mint.svg",
+      "bytes": 171,
+      "sha256": "4840d9abc3df42a991540a2df2c8f7ae1eae0bf53d1d1f737b41cb4eb49d04d0"
+    },
+    {
+      "path": "assets/welcome/e27f8.svg",
+      "bytes": 1821,
+      "sha256": "4c716bd6d883ac1c1fd72f5226bcf0de6dd8233fbd68c3f6697cb24bf3765bf2"
+    },
+    {
+      "path": "assets/welcome/f69fa.svg",
+      "bytes": 840,
+      "sha256": "acefe0e12332f002c3c874c0edde1efa62b740798b1ea06f752bfbbfad994f9e"
+    },
+    {
+      "path": "assets/welcome/hero-character.png",
+      "bytes": 336294,
+      "sha256": "c1c49bd673563b9f72a12f561045a1b2302d7d0a5ede2454aabf735c7e541675"
+    },
+    {
+      "path": "assets/welcome/scene-background.jpg",
+      "bytes": 95945,
+      "sha256": "cd1180c40585f6ca3f981f9f7261975762f4f8bbc7aaae14486e398b324aeadb"
+    },
+    {
+      "path": "assets/welcome/scene-thumbnail.jpg",
+      "bytes": 204807,
+      "sha256": "a877356cd6d580edad95734c4b413d4934d4603bbc21b0481369efdf14b022cc"
+    },
+    {
+      "path": "campanha/index.html",
+      "bytes": 1717,
+      "sha256": "de149fd1dfc6f3da514c7cb455c6302ebf87cc242aa279aae24ad47dad089e68"
+    },
+    {
+      "path": "campanha/manifest.webmanifest",
+      "bytes": 450,
+      "sha256": "ec7b9e3552909358fba8c66ab04cabe503f3181aa379b77f936a4031b91ef9c9"
+    },
+    {
+      "path": "config/supabase.json",
+      "bytes": 287,
+      "sha256": "7bb5a3405a256a16c2312f73694ebe6ed2f61caed5c3d5d6d0328f953960043b"
+    },
+    {
+      "path": "css/auth.css",
+      "bytes": 9197,
+      "sha256": "17e04e3169661d6973ca71b442ffacad8d8621d3a79b0a6dc2be9041eda122f1"
+    },
+    {
+      "path": "css/battle.css",
+      "bytes": 14347,
+      "sha256": "c8fbd028bcef443d7ec86fa342a8ce4fb290b8e06b363f5c42d4055b9c140522"
+    },
+    {
+      "path": "css/game.css",
+      "bytes": 28997,
+      "sha256": "ab0d952e572730bc774fdfb96a1cdb0e3aee48eaa5256c78b56ccbfbf376ab77"
+    },
+    {
+      "path": "css/narrative-alamut.css",
+      "bytes": 17326,
+      "sha256": "302164c92112f08368fe2196298c18d240af3e975bbc85285513a138772c6f62"
+    },
+    {
+      "path": "css/narrative-cutscene.css",
+      "bytes": 3810,
+      "sha256": "f1b8e25f11c42da5c0c4cc8279976174a1d14c256890904bc22cb0bd51114e51"
+    },
+    {
+      "path": "css/narrative-dimensao.css",
+      "bytes": 15460,
+      "sha256": "dc670b3d645c46629d36e564a4cb1410f0aa500231ed54e0953fd0b7208f6191"
+    },
+    {
+      "path": "css/narrative-laboratorio.css",
+      "bytes": 19195,
+      "sha256": "3ffc239c874f85c665251c3c018dd3080f1f7e7390839f313a02c1b38c2324c1"
+    },
+    {
+      "path": "css/narrative-pagem.css",
+      "bytes": 13842,
+      "sha256": "559a66d831fc4b5d26c04490f26462d3743f7bad11d7ada9ee63f6fb91273f36"
+    },
+    {
+      "path": "css/narrative.css",
+      "bytes": 46760,
+      "sha256": "a37380826390a5382914e78b1fdafd866eb90956fbc16d5a16fd3c2633c2a16b"
+    },
+    {
+      "path": "css/quiz-code.css",
+      "bytes": 6679,
+      "sha256": "0625ff6419be5dee16a2796a72f979a0180113c3e4d134e989d6b5e46f0f5994"
+    },
+    {
+      "path": "css/quiz-interface.css",
+      "bytes": 34903,
+      "sha256": "f8e1cb0638feeff3c78d8372b7bbb20fc03c07f72760019bc853e126e2cb3fd7"
+    },
+    {
+      "path": "css/quiz-preparation.css",
+      "bytes": 2850,
+      "sha256": "61d879b3f69bc7bbe3f99cf14455f3adc351a0dcd825fa4f0941e459d7081751"
+    },
+    {
+      "path": "css/style.css",
+      "bytes": 6925,
+      "sha256": "04e06dd7d26879954602eae10b01d982f0ed4de6619a1b6b73fa41b41c2a2819"
+    },
+    {
+      "path": "css/themes.css",
+      "bytes": 7878,
+      "sha256": "c04d29adc11481b5483eb2ea5fd7e2a0ff88c9efa7ad7788451948e7acbd48d5"
+    },
+    {
+      "path": "css/viewport.css",
+      "bytes": 20341,
+      "sha256": "fd2f805e742633beafffc712edbd9cc1536e9cd6683f85ddf5698c1ca7358906"
+    },
+    {
+      "path": "css/welcome.css",
+      "bytes": 12327,
+      "sha256": "4ea6920dfc6361fb97857f7232db545d0c409cb1edac22dde64aae6454190c9f"
+    },
+    {
+      "path": "data/campanhas.json",
+      "bytes": 11755,
+      "sha256": "5c0c784cccbc688cc84b16663178fb9dbd37209f66bc1119758dab2767735300"
+    },
+    {
+      "path": "data/config.json",
+      "bytes": 495,
+      "sha256": "8b5b661990395254e2daf72cab88e0d8f1a1f43d59953c38a6f4effe30247d58"
+    },
+    {
+      "path": "data/fases.json",
+      "bytes": 2406,
+      "sha256": "a24ce27a488aa74e45c70488dbdcefbcd3e3ebeb1b9ad0e1b246c14226530839"
+    },
+    {
+      "path": "data/narrativa/dimensao.json",
+      "bytes": 11814,
+      "sha256": "4519f4576e5182272da2a783165d5a9a143fdd80c7792274d81334fcc00df82b"
+    },
+    {
+      "path": "data/narrativa/forte-alamut.json",
+      "bytes": 11130,
+      "sha256": "395c55b6f0bf23fbe55b257bab1667981a62c931e4f222d00e4b0bf8114980cd"
+    },
+    {
+      "path": "data/narrativa/laboratorio-22.json",
+      "bytes": 15592,
+      "sha256": "78104b4eaac23acfd82a06f17789af61a7bd23cdf68700abc365bd0065815d47"
+    },
+    {
+      "path": "data/narrativa/meridiana.json",
+      "bytes": 4936,
+      "sha256": "5d5a66b3b2d487d2b86bdc153eb6f083e0bf9a859a460823d83e8e09cff9de52"
+    },
+    {
+      "path": "data/narrativa/pagem.json",
+      "bytes": 13051,
+      "sha256": "d2b1ceb015c6d52d84d40aea70defcb8fb03a6c070b5d35c42c00298fc9ecf00"
+    },
+    {
+      "path": "data/narrativa/terminal-alamut.json",
+      "bytes": 1374,
+      "sha256": "176b703d0c2f7dc3a01060dd841e9673ddc784dff91066181cfdc0a5fbce1add"
+    },
+    {
+      "path": "data/narrativa/terminal-dimensao.json",
+      "bytes": 1731,
+      "sha256": "9bb6a68560181f8594c23eb3a473b2071a52408ff717bf00de2259735b65db67"
+    },
+    {
+      "path": "data/narrativa/terminal-laboratorio-22.json",
+      "bytes": 3513,
+      "sha256": "e6fc50cb8f1dd83386b708bc05eb65cf73fd716c55d7516af0389b1f3da626f7"
+    },
+    {
+      "path": "data/narrativa/terminal-meridiana.json",
+      "bytes": 1166,
+      "sha256": "8e023ecf1e20e9bf2ecef6238b9fe59542f12b02d83ceebe942ad3015ab1c255"
+    },
+    {
+      "path": "data/narrativa/terminal-pagem.json",
+      "bytes": 1872,
+      "sha256": "e189ff02be76e464ae61798d64780e4d7d48bb37d40405a48312369248f5a452"
+    },
+    {
+      "path": "data/narrativa/vozes-meridiana.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "path": "data/objetivos.json",
+      "bytes": 1098,
+      "sha256": "9ec9b08ab0d32d568c99d7feaf19575ba42dc7482c663ff2c639eae7c8c4d4d5"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1837,
+      "sha256": "0f70aa403700e8dce9dd066c20866728dfef303c1f9853c86c743131d5645e0a"
+    },
+    {
+      "path": "js/app.js",
+      "bytes": 301105,
+      "sha256": "eb4daaecd75d11a77ea68f1d4460b6eb05557dc89d4cbf7bfd908b83755c6576"
+    },
+    {
+      "path": "js/narrative-app.js",
+      "bytes": 1120994,
+      "sha256": "f563c814055273540dabfa70a118674deefef79807d7ef8c32e5039eff1cb835"
+    },
+    {
+      "path": "js/narrative-python-worker.js",
+      "bytes": 21668,
+      "sha256": "74cc5364acbf29b7e2deb4c3dcf35ceee3ac8a8093d573c8c7fb8f4c6aea1e9c"
+    },
+    {
+      "path": "runtime/pyodide/pyodide-lock.json",
+      "bytes": 119077,
+      "sha256": "5dc2fc119108bc148c7457dc86e7675b5c87e1cafd420b9c34c1eaef7b36c010"
+    },
+    {
+      "path": "runtime/pyodide/pyodide.asm.mjs",
+      "bytes": 1250344,
+      "sha256": "f7cdc8ece80678ceb712f8e65ebe6d3a83203a180c399865f49612a051693635"
+    },
+    {
+      "path": "runtime/pyodide/pyodide.asm.wasm",
+      "bytes": 9598218,
+      "sha256": "cc36e3cab04fdfc9a63ff13eb52eae2b911bf46c025cc7b281f394bd3de1d5e6"
+    },
+    {
+      "path": "runtime/pyodide/pyodide.mjs",
+      "bytes": 17931,
+      "sha256": "6f1d60f7bf529beb300f0f47983c921d3982363640ba20af0e38efdddbc66109"
+    },
+    {
+      "path": "runtime/pyodide/python_stdlib.data",
+      "bytes": 2545637,
+      "sha256": "fa1957e5777068fc4f7437f96d860ae2fbe9c19732ba06c84e004ec16dd7dd7a"
+    },
+    {
+      "path": "sw-campaign.js",
+      "bytes": 2857,
+      "sha256": "d5c1d3d8e6cd6e166ed7c99ca93e15772237ab1c413e006eb3029688e8a9eb2e"
+    }
+  ]
+}

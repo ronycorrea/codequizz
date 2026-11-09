@@ -1,0 +1,126 @@
+{
+  "id": "forte-alamut",
+  "version": 1,
+  "title": "O Pôr do Sol",
+  "chapter": "Forte Alamut",
+  "chapterNumber": 2,
+  "location": "Fortaleza de arquivos e segurança da Ordem Suprema · 2149",
+  "introduction": "O grupo procura a origem de arquivos transferidos pela Ordem. Uma antiga rota de carga pode dar acesso ao forte.",
+  "completionText": "FASE 2 CONCLUÍDA — PRÓXIMO DESTINO: PAGEM",
+  "scenes": {
+    "opening": [
+      {"speaker": "Nilo", "text": "A entrada principal é impossível."},
+      {"speaker": "Buster", "text": "Existia uma rota de carga pelo lado leste."},
+      {"speaker": "San", "text": "Existia?"},
+      {"speaker": "Buster", "text": "Faz tempo que passei por aqui."},
+      {"speaker": "Yuna", "text": "O mapa tem lacunas. Precisamos conferir no terminal de manutenção."}
+    ],
+    "corridor": [
+      {"speaker": "San", "text": "A porta abriu."},
+      {"speaker": "Buster", "text": "Ótimo. Prefiro entrar sem arrancá-la."},
+      {"speaker": "Nilo", "text": "Guardem a comemoração para depois. Temos pouco tempo."}
+    ],
+    "sacrifice": [
+      {"speaker": "Yuna", "text": "Eles fecharam o caminho de volta!"},
+      {"speaker": "San", "text": "Há uma saída no piso inferior!"},
+      {"speaker": "Buster", "text": "A divisória está cedendo. Sigam!"},
+      {"speaker": "Nilo", "text": "Alguém precisa segurar a trava."},
+      {"speaker": "San", "text": "Não. Vamos sair juntos."},
+      {"speaker": "Nilo", "text": "Você conseguiu os arquivos? Então leve-os."},
+      {"speaker": "San", "text": "Nilo..."},
+      {"speaker": "Nilo", "text": "Guarde isto."}
+    ],
+    "capture": [
+      {"speaker": "San", "text": "Yuna, responda."},
+      {"speaker": "Yuna", "text": "Estou tentando a passagem lateral."},
+      {"speaker": "San", "text": "Fique onde puder se proteger. Vamos voltar."}
+    ],
+    "return": [
+      {"speaker": "San", "text": "Você conhecia aqueles acessos."},
+      {"speaker": "Buster", "text": "Os antigos. Não as patrulhas que nos encontraram."}
+    ]
+  },
+  "missions": [
+    {
+      "id": "A01",
+      "type": "terminal",
+      "subject": "Terminal · navegação e leitura de pistas",
+      "learningObjectives": ["Consultar o mapa local e examinar acessos.", "Usar a informação obtida para marcar uma rota."],
+      "title": "Encontrar a rota de carga",
+      "objective": "Encontre MANUTENCAO_LESTE no terminal e marque a passagem de manutenção.",
+      "filename": "terminal",
+      "starter": "",
+      "hints": ["Buster falou de uma antiga rota de carga. Use essa pista para escolher onde investigar.", "Compare o mapa com as informações do setor leste antes de decidir pelo acesso.", "Encontrar uma passagem e registrá-la como rota são ações diferentes. Confira o que ainda falta no terminal."],
+      "actionLabel": "Abrir acesso lateral",
+      "effect": "ROTA DE CARGA MARCADA — Buster move a peça de concreto e libera a escada lateral.",
+      "reviews": [
+        {"id": "A01-rota", "question": "O terminal informa MANUTENCAO_LESTE. O que permite seguir pela rota correta?", "choices": ["Apenas abrir o mapa.", "Examinar o acesso e marcar a manutenção como rota.", "Repetir qualquer comando até a porta abrir."], "correctIndex": 1, "explanation": "Consultar o mapa fornece pistas. A rota precisa ser identificada e marcada antes de abrir o acesso lateral.", "source": "Documento de design da campanha, p. 8 — A01."},
+        {"id": "A01-investigacao", "question": "Por que examinar leste ajuda a missão?", "choices": ["Obtém informação sobre o acesso antes de escolhê-lo.", "Executa comandos no computador real.", "Conclui automaticamente os outros desafios."], "correctIndex": 0, "explanation": "A investigação liga uma pista ao próximo comando. Este terminal é uma simulação local e não executa comandos do computador.", "source": "Documento de design da campanha, p. 8; Guia de ferramentas, terminal simulado."}
+      ]
+    },
+    {
+      "id": "A02",
+      "type": "python",
+      "subject": "Python · comparações, and e limites",
+      "learningObjectives": ["Combinar duas condições com and.", "Testar o caso em que a pressão é exatamente o limite."],
+      "title": "Programar o controle de acesso",
+      "objective": "Libere a porta somente com pressão de pelo menos 70 e a chave ALM-7.",
+      "filename": "acesso.py",
+      "functionName": "acesso_liberado",
+      "starter": "def acesso_liberado(pressao, chave):\n    # Pressão mínima: 70; chave exigida: ALM-7\n    pass",
+      "hints": ["Trate a pressão e a identificação da chave como duas verificações separadas.", "A porta pode abrir se apenas uma delas estiver correta? Pense em como combinar as verificações.", "Teste a pressão exatamente no mínimo e depois uma chave incorreta. Qual dessas entradas sua lógica ainda aceita indevidamente?"],
+      "actionLabel": "Liberar trava",
+      "effect": "PRESSÃO E CHAVE VALIDADAS — a porta de manutenção desliza e libera a entrada.",
+      "publicTests": [
+        {"args": [72, "ALM-7"], "expected": true, "label": "Pressão suficiente e chave reconhecida"},
+        {"args": [69, "ALM-7"], "expected": false, "label": "Pressão abaixo do limite"},
+        {"args": [90, "ERRO"], "expected": false, "label": "Chave incorreta"},
+        {"args": [70, "ALM-7"], "expected": true, "label": "Pressão exatamente no limite"}
+      ],
+      "reviews": [
+        {"id": "A02-and", "question": "Para abrir a porta, pressão e chave precisam estar corretas. Qual operador combina essas condições?", "choices": ["or", "and", "not"], "correctIndex": 1, "explanation": "Com and, o resultado só é verdadeiro quando as duas condições são verdadeiras. or aceitaria apenas uma delas.", "source": "https://docs.python.org/3/reference/expressions.html#boolean-operations"},
+        {"id": "A02-limite", "question": "A pressão mínima é 70. Qual comparação também aceita o valor 70?", "choices": ["pressao > 70", "pressao < 70", "pressao >= 70"], "correctIndex": 2, "explanation": "O operador >= inclui a igualdade. Usar apenas > rejeitaria a pressão mínima permitida.", "source": "https://docs.python.org/3/reference/expressions.html#comparisons"}
+      ]
+    },
+    {
+      "id": "A03",
+      "type": "html",
+      "subject": "HTML · formulários e acessibilidade",
+      "learningObjectives": ["Associar rótulos aos campos de um formulário.", "Usar name, required, select e um botão de envio."],
+      "title": "Reconstruir a requisição de arquivo",
+      "objective": "Crie os campos de lote e tipo histórico e um botão de consulta no formulário.",
+      "filename": "requisicao.html",
+      "starter": "<form id=\"requisicao\">\n  <!-- Campo de lote com identificação e preenchimento obrigatório -->\n  <!-- Seletor de tipo com a opção historico -->\n  <!-- Botão de consulta -->\n</form>",
+      "hints": ["Liste as informações que a consulta precisa receber antes de construir os campos.", "Cada controle precisa ter um nome para a consulta e um rótulo que o jogador consiga identificar.", "Tente consultar sem preencher o lote. Depois confira a associação dos rótulos, as opções do seletor e o comportamento do botão."],
+      "actionLabel": "Solicitar lote",
+      "effect": "REQUISIÇÃO ACEITA — o terminal local identifica a localização do lote protegido.",
+      "reviews": [
+        {"id": "A03-label", "question": "Como associar um rótulo a input id=\"lote\"?", "choices": ["Usar label for=\"lote\".", "Usar apenas um texto próximo ao campo.", "Adicionar required ao label."], "correctIndex": 0, "explanation": "O atributo for do label aponta para o id do campo. Essa associação ajuda a identificar o campo e permite focá-lo pelo rótulo.", "source": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label"},
+        {"id": "A03-required", "question": "Qual é a função de required no campo do lote?", "choices": ["Escolher automaticamente o lote correto.", "Indicar que o campo precisa ser preenchido para o formulário ser válido.", "Enviar a requisição para um servidor externo."], "correctIndex": 1, "explanation": "required participa da validação do formulário. Ele não escolhe o valor e não inicia uma conexão de rede.", "source": "https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required"}
+      ]
+    },
+    {
+      "id": "A04",
+      "type": "python",
+      "subject": "Python · listas, dicionários, for e if",
+      "learningObjectives": ["Percorrer uma lista de registros e filtrar por um campo.", "Preservar a ordem das origens e devolver uma lista vazia quando não houver resultados."],
+      "title": "Extrair a origem dos arquivos",
+      "objective": "Devolva as origens dos registros do tipo historico, mantendo a ordem.",
+      "filename": "origens.py",
+      "functionName": "origens_historicas",
+      "starter": "def origens_historicas(registros):\n    # Cada registro tem tipo e origem\n    resultado = []\n    # Percorra os registros e selecione os históricos\n    return resultado",
+      "hints": ["Observe um registro de cada vez e separe o critério de seleção da informação que será devolvida.", "Qual campo informa se o registro pertence ao grupo pedido? E qual campo contém a origem?", "Seu resultado preserva a ordem da entrada e continua sendo uma lista quando nenhum registro atende ao critério?"],
+      "actionLabel": "Extrair arquivos",
+      "effect": "ORIGEM IDENTIFICADA: PAGEM — coordenadas parciais recuperadas. A extração acionou o alerta do setor e a rota de retorno foi bloqueada.",
+      "publicTests": [
+        {"args": [[{"tipo": "historico", "origem": "PAGEM"}, {"tipo": "logistica", "origem": "DEPÓSITO"}, {"tipo": "historico", "origem": "ARQUIVO NORTE"}]], "expected": ["PAGEM", "ARQUIVO NORTE"], "label": "Seleciona históricos e mantém a ordem"},
+        {"args": [[{"tipo": "logistica", "origem": "ALAMUT"}]], "expected": [], "label": "Sem registros históricos"},
+        {"args": [[]], "expected": [], "label": "Lista vazia"}
+      ],
+      "reviews": [
+        {"id": "A04-filtro", "question": "Qual condição seleciona somente os registros históricos?", "choices": ["registro[\"origem\"] == \"historico\"", "registro[\"tipo\"] == \"historico\"", "registros == \"historico\""], "correctIndex": 1, "explanation": "O campo tipo informa a categoria do registro. Depois de verificar esse campo, acrescentamos a origem à lista de resultado.", "source": "https://docs.python.org/3/tutorial/datastructures.html#dictionaries"},
+        {"id": "A04-ordem", "question": "Ao percorrer os registros na ordem e usar append em cada origem histórica, o que acontece?", "choices": ["As origens são sempre ordenadas alfabeticamente.", "A lista resultante perde todas as repetições.", "A lista mantém a ordem de aparecimento, inclusive origens repetidas."], "correctIndex": 2, "explanation": "append acrescenta um item ao fim da lista. Um laço na ordem original mantém essa ordem e não remove repetições.", "source": "https://docs.python.org/3/tutorial/datastructures.html#more-on-lists"}
+      ]
+    }
+  ]
+}
